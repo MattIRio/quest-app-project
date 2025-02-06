@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -11,8 +15,8 @@ import lombok.Setter;
 public class UserModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     private String userName;
 
@@ -20,8 +24,19 @@ public class UserModel {
 
     private String email;
 
-    private String phoneNumber;
+    private String avatar;
 
     private String profilePicture;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_completed_quests",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "quest_id"))
+    private List<QuestModel> completedQuests;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<QuestModel> createdQuests;
+
+    private int createdQuestsRating;
 }

@@ -26,8 +26,6 @@ public class UserModel {
 
     private String avatar;
 
-    private String profilePicture;
-
     @ManyToMany
     @JoinTable(
             name = "user_completed_quests",

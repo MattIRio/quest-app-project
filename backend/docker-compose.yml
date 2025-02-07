@@ -25,6 +25,14 @@ services:
     ports:
       - "5433:5432"
 
+  python_app:
+    build: .
+    ports:
+      - "6060:6060"
+    depends_on:
+      - quest_db
+
+
 volumes:
   pg_data:
 

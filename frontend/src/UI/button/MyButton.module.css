@@ -1,0 +1,14 @@
+.myButton {
+
+   padding: 10px 30px;
+   border-radius: 25px;
+
+   transition: 0.3s;
+
+
+}
+
+.myButton:hover {
+   background: #585acab3;
+   transition: 0.3s;
+}

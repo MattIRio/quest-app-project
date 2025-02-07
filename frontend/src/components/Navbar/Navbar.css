@@ -1,0 +1,13 @@
+.navbar {
+   display: flex;
+   align-items: center;
+   gap: 3vw;
+   justify-content: space-evenly;
+   min-height: 80px;
+
+   & a {
+      font-size: 1.7rem;
+      padding: 15px;
+      text-align: center;
+   }
+}

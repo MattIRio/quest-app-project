@@ -1,0 +1,10 @@
+:root {
+   --bg-color: white;
+   --text-color: rgb(5, 22, 32);
+}
+
+body {
+   background-color: var(--bg-color);
+   color: var(--text-color);
+   transition: background-color 1s, color 1s;
+}

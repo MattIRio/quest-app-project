@@ -9,5 +9,5 @@ import java.util.UUID;
 
 public interface QuestRepository extends JpaRepository<QuestModel, UUID> {
     Optional<QuestModel> findById(UUID id);
-    QuestModel findByEmail(String email);
+
 }

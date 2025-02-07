@@ -40,7 +40,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.QuestTaskApplication.executor": "Debug",
+    "Application.QuestTaskApplication.executor": "Run",
     "Maven.quest-project [clean].executor": "Run",
     "Maven.quest-project [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",

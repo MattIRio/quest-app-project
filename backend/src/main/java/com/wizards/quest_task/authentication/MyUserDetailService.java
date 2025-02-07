@@ -2,7 +2,7 @@ package com.wizards.quest_task.authentication;
 
 import com.wizards.quest_task.controller.autentification.LoginController;
 import com.wizards.quest_task.model.UserModel;
-import com.wizards.quest_task.repositories.UsersRepository;
+import com.wizards.quest_task.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -20,19 +20,19 @@ import java.util.List;
 public class MyUserDetailService implements UserDetailsService {
     @Autowired
     private LoginController loginController;
-    private final UsersRepository usersRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public MyUserDetailService(UsersRepository usersRepository, PasswordEncoder passwordEncoder) {
-        this.usersRepository = usersRepository;
+    public MyUserDetailService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserModel user = usersRepository.findByEmail(email);
+        UserModel user = userRepository.findByEmail(email);
         if (user != null) {
             List<GrantedAuthority> authorities = new ArrayList<>();
 

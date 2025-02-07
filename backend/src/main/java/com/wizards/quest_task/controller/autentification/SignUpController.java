@@ -3,7 +3,7 @@ package com.wizards.quest_task.controller.autentification;
 
 
 import com.wizards.quest_task.model.UserModel;
-import com.wizards.quest_task.repositories.UsersRepository;
+import com.wizards.quest_task.repositories.UserRepository;
 import com.wizards.quest_task.service.signup.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class SignUpController {
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 

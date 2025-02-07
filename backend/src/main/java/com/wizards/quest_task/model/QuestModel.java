@@ -1,6 +1,7 @@
 package com.wizards.quest_task.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@Builder
 @Entity
 public class QuestModel {
 
@@ -20,11 +22,11 @@ public class QuestModel {
 
     private String description;
 
-    private int amountOfQuestions;
+    private Integer amountOfQuestions;
 
-    private int timeLimit;
+    private Integer timeLimit;
 
-    private int rating;
+    private Integer rating;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
@@ -34,7 +36,7 @@ public class QuestModel {
     private List<UserModel> usersWhoCompleted;
 
     @OneToMany(mappedBy = "parentQuest", cascade = CascadeType.ALL)
-    private List<QuestTask> tasks;
+    private List<QuestTaskModel> tasks;
 
 
 }

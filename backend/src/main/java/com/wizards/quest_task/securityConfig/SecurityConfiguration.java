@@ -3,6 +3,7 @@ package com.wizards.quest_task.securityConfig;
 
 
 import com.wizards.quest_task.authentication.AuthenticationSuccessHandler;
+import com.wizards.quest_task.authentication.CustomAuthenticationSuccessHandler;
 import com.wizards.quest_task.authentication.MyUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,10 +51,8 @@ public class SecurityConfiguration{
                 )
                 .formLogin(httpSecurityFormLoginConfigurer -> {
                     httpSecurityFormLoginConfigurer
-//                            .loginPage("/loginPage")
                             .usernameParameter("email")
-                            .successHandler(new AuthenticationSuccessHandler())
-                            .defaultSuccessUrl("/profileform", true)
+                            .successHandler(new CustomAuthenticationSuccessHandler())
                             .permitAll();
 
                 })

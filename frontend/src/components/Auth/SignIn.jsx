@@ -9,15 +9,19 @@ import MyInput from "../../UI/input/MyInput.jsx"
 export const SignIn = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-   const [login, { isLoading }] = authService.useSignInMutation()
-   const redirectOnAuth = useRedirectOnAuth()
+
+   const redirectOnAuth = useRedirectOnAuth();
+
+   // Використовуємо useLazyQuery для відкладеного виклику
+   const [signIn, { data, error, isLoading }] = authService.useLazySignInQuery();
 
    const handleLogin = async () => {
       try {
-         await login({ email, password }).unwrap();
-         redirectOnAuth()
+         const { data } = await signIn({ email, password }); // викликаємо запит
+         console.log(data);
+         redirectOnAuth(); // редірект після успішної автентифікації
       } catch (err) {
-         console.error('Failed to register:', err);
+         console.error('Failed to sign in:', err);
       }
    };
 

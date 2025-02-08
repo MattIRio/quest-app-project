@@ -8,11 +8,15 @@ import Tasks from "../pages/Tasks.jsx";
 
 export const publicRoutes = [
    { path: "/auth", component: Auth },
+<<<<<<< HEAD
    { path: "/main", component: Main },
    {path: "/create_quest", component: CreateQuest},
    {path: "/create_quest/tasks", component: Tasks},
+=======
+
+>>>>>>> 261a82d (rewrite login service for get instead of post method)
 ]
 
 export const privateRoutes = [
-   { path: "/profile", component: Profile }
+   { path: "/main", component: Main },
 ]

@@ -30,11 +30,11 @@ const Profile = () => {
                         <DataField data="Joe Dohn" style="nickname" />
                         <DataField data="example.gmail.com" style="email" />
                     </Stack>
-                    <Grid2 item xs={12}>
-                        <Typography variant="h5" gutterBottom>
-                            Completed Quests
-                        </Typography>
-                    </Grid2>
+                </Grid2>
+                <Grid2 container spacing={2}>
+                    <Typography variant="h5" gutterBottom>
+                        Completed Quests
+                    </Typography>
                     <CompletedQuests data={completedQuestsList} />
                 </Grid2>
             </ProfileContainer>

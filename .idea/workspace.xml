@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238b4beb-2665-4f7d-badc-7125e09176c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Quests/AddQuestBlock.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/CreateQuest.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Tasks.jsx" afterDir="false" />
+    <list default="true" id="238b4beb-2665-4f7d-badc-7125e09176c3" name="Changes" comment="all changes(add user page)">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +45,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -69,7 +65,7 @@
     &quot;Maven.quest-project [install].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;development-frontend&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Hakatoon/Project/quest-app-project&quot;,
@@ -116,10 +112,27 @@
       <workItem from="1738944173602" duration="1379000" />
       <workItem from="1738946177816" duration="1722000" />
       <workItem from="1739015706180" duration="17764000" />
+      <workItem from="1739136767226" duration="159000" />
+      <workItem from="1739136947929" duration="147000" />
     </task>
+    <task id="LOCAL-00001" summary="all changes(add user page)">
+      <option name="closed" value="true" />
+      <created>1739136327121</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739136327121</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="all changes" />
+    <MESSAGE value="delete unused" />
+    <MESSAGE value="all changes(add user page)" />
+    <option name="LAST_COMMIT_MESSAGE" value="all changes(add user page)" />
   </component>
 </project>

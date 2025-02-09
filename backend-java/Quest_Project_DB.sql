@@ -59,6 +59,38 @@ CREATE TABLE public.quest_task (
 
 ALTER TABLE public.quest_task OWNER TO postgres;
 
+
+
+--
+-- Name: user_ongoing_quests; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.user_ongoing_quests (
+    user_id uuid NOT NULL,
+    quest_id uuid NOT NULL,
+    starttime timestamp DEFAULT CURRENT_TIMESTAMP,
+    finishtime timestamp
+);
+
+
+ALTER TABLE public.user_ongoing_quests OWNER TO postgres;
+
+
+--
+-- Name: user_ongoing_tasks; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.user_ongoing_tasks (
+    user_id uuid NOT NULL,
+    quest_id uuid NOT NULL,
+    task_id uuid NOT NULL,
+    user_answer character varying(255)
+);
+
+
+ALTER TABLE public.user_ongoing_tasks OWNER TO postgres;
+
+
 --
 -- Name: user_completed_quests; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -143,6 +175,45 @@ ALTER TABLE ONLY public.quest_task
 
 ALTER TABLE ONLY public.user_model
     ADD CONSTRAINT user_model_pkey PRIMARY KEY (id);
+
+
+ --
+-- Name: user_ongoing_tasks fk_user_ongoing_tasks_quest_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_ongoing_tasks
+    ADD CONSTRAINT fk_user_ongoing_tasks_quest_id FOREIGN KEY (quest_id) REFERENCES public.quest_model(id);
+
+ --
+-- Name: user_ongoing_tasks fk_user_ongoing_tasks_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_ongoing_tasks
+    ADD CONSTRAINT fk_user_ongoing_tasks_user_id FOREIGN KEY (user_id) REFERENCES public.user_model(id);
+
+ --
+-- Name: user_ongoing_tasks fk_user_ongoing_tasks_task_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_ongoing_tasks
+    ADD CONSTRAINT fk_user_ongoing_tasks_task_id FOREIGN KEY (task_id) REFERENCES public.quest_task(id);
+
+
+ --
+-- Name: user_ongoing_quests fk_user_ongoing_quests_quest_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_ongoing_quests
+    ADD CONSTRAINT fk_user_ongoing_quests_quest_id FOREIGN KEY (quest_id) REFERENCES public.quest_model(id);
+
+ --
+-- Name: user_ongoing_quests fk_user_ongoing_quests_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_ongoing_quests
+    ADD CONSTRAINT fk_user_ongoing_quests_user_id FOREIGN KEY (user_id) REFERENCES public.user_model(id);
+
+
 
 
 --

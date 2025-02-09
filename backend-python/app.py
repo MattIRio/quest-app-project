@@ -1,7 +1,9 @@
+
 import os
-from flask import Flask, flash, request, redirect, url_for, jsonify
+from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from models import Quest,db, UserComplitedQuests
+
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'webm', 'flv', 'avi', 'mov', 'wmv', 'mp4'}
@@ -55,15 +57,17 @@ def upload_file():
         if 'file' not in request.files:
             return 'Forbidden', 403
         file = request.files['file']
+        path=""
 
         if file.filename == '':
-
-            return "Found", 302
+            return "NotFound", 404
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return "Found", 302
-        
+            path=os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(path)
+        return jsonify(path)
+
+import questuserflow
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")

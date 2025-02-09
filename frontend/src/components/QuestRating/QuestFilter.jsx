@@ -1,6 +1,7 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Button } from "@mui/material";
 import TagList from "./TagList";
 import { useState } from "react";
+import CreateQuestButton from "../CreateQuestSection.jsx/CreateQuestButton";
 
 const QuestFilter = ({ onFilterChange }) => {
    const defaultFilters = {
@@ -43,21 +44,29 @@ const QuestFilter = ({ onFilterChange }) => {
    };
 
    return (
-      <Box display="flex" gap={2} flexWrap="wrap" alignItems="center">
-         <Box display="flex" gap={2}>
+      <Box display="flex" gap={2} flexWrap="wrap">
+         <Box display="flex" gap={2} width="100%">
             <TextField
                label="Пошук за назвою"
                variant="outlined"
                value={search}
                onChange={handleSearchChange}
+               sx={{ flex: "1 1 100%" }}
             />
-            <FormControl sx={{ minWidth: 100 }}>
+            <FormControl sx={{ minWidth: 100, flex: "1 1 100%" }} variant="outlined">
                <InputLabel>Сортування</InputLabel>
-               <Select value={rating} onChange={handleRatingChange} autoWidth>
+               <Select
+                  value={rating}
+                  onChange={handleRatingChange}
+                  label="Сортування" // Важливо для коректного позиціонування
+               >
                   <MenuItem value="desc">Найкращі</MenuItem>
                   <MenuItem value="asc">Найгірші</MenuItem>
                </Select>
             </FormControl>
+
+
+            <CreateQuestButton />
          </Box>
          <TagList handleTagClick={handleTagClick} selectedTags={selectedTags} />
          <Button variant="outlined" onClick={handleClearFilters}>Очистити фільтри</Button>

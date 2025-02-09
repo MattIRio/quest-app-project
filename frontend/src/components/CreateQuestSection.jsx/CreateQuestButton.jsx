@@ -8,18 +8,12 @@ export default function CreateQuestButton() {
             component={Link}
             to="/create_quest" // Шлях для сторінки створення квесту
             style={{
-               width: '100%',
-               height: '70px',
-               display: 'flex',
-               flexDirection: 'column',
-               alignItems: 'center',
-               justifyContent: 'center',
-               background: "purple",
+               background: "#394786",
                borderRadius: 20,
-               color: "white"
-            }}
-         >
-            <Typography fontSize={30}> + Create quest</Typography>
+               color: "white",
+               flex: "1 1 100%"
+            }}>
+            <Typography> + Create quest</Typography>
          </Button>
       </>
 

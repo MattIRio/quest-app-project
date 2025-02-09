@@ -16,23 +16,32 @@ export default function Rating() {
       setFilteredQuests(filtered);
    };
    return (
-      <>
+      <><div style={{ backdropFilter: "blur(17px)", background: "rgba(255,255,255,0.35)", padding: 30, borderRadius: 20 }}>
          <Typography variant="h5" gutterBottom style={{ marginTop: "20px" }}>
             Рейтинг квестів
          </Typography>
          <Box display="flex" flexDirection="column" gap={2}>
             <QuestFilter onFilterChange={handleFilterChange} />
-            <Paper elevation={3}>
-               <List>
-                  {filteredQuests.map((quest) => (
-                     <ListItem key={quest.id}>
-                        <ListItemText primary={quest.name} secondary={`Рейтинг: ${quest.rating}`} />
-                     </ListItem>
-                  ))}
-               </List>
-            </Paper>
-         </Box>
+            <List>
+               {filteredQuests.map((quest, index) => (
+                  <ListItem
+                     key={quest.id}
+                     style={{
+                        backgroundColor: index & 1 ? 'rgba(255,255,255,0.1)' : 'transparent',
+                        borderTop: index & 1 ? "1px solid #ddddd" : "",
+                        borderBottom: index & 1 ? "1px solid #ddddd" : "",
+                     }}
+                  >
+                     <ListItemText
+                        primary={quest.name}
+                        secondary={`Рейтинг: ${quest.rating}`}
+                     />
+                  </ListItem>
+               ))}
+            </List>
 
+         </Box>
+      </div>
       </>
 
    )

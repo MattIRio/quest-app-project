@@ -3,7 +3,8 @@
    border-radius: 25px;
    border: 1px solid #ddd;
    transition: 0.3s;
-
+   width: 100%;
+   display: block;
 }
 
 .myButton:hover {

@@ -5,6 +5,7 @@
    min-height: 100svh;
    flex-grow: 1;
    padding-bottom: 100px;
+   gap: 20px;
 }
 
 .wrapper {

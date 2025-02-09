@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="238b4beb-2665-4f7d-badc-7125e09176c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,14 +42,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.QuestTaskApplication.executor": "Run",
+    "Application.QuestTaskApplication.executor": "Debug",
     "Maven.quest-project [clean].executor": "Run",
     "Maven.quest-project [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/projects/PROJECTSINPROCESS/quest-app-project/backend-java",
+    "last_opened_file_path": "D:/projects/PROJECTSINPROCESS/shopProject",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -166,36 +166,6 @@
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/quest/QuestService.java</url>
           <line>53</line>
           <option name="timeStamp" value="107" />
@@ -217,11 +187,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/quest/QuestService.java</url>
           <line>57</line>
           <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/quest/QuestService.java</url>
@@ -249,209 +214,214 @@
           <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="128" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="129" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="131" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="135" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="136" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="137" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>47</line>
+          <line>49</line>
           <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>48</line>
+          <line>50</line>
           <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>49</line>
+          <line>51</line>
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>51</line>
+          <line>54</line>
           <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="143" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/questTask/QuestTaskController.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/questTask/QuestTaskController.java</url>
           <line>35</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/questTask/QuestTaskController.java</url>
+          <line>36</line>
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>50</line>
+          <line>52</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/questTask/QuestTaskController.java</url>
-          <line>38</line>
+          <line>39</line>
           <option name="timeStamp" value="150" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="151" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="152" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>104</line>
+          <line>111</line>
           <option name="timeStamp" value="155" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="156" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="173" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="157" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="158" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="159" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="176" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="160" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="177" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="161" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="178" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
           <line>60</line>
-          <option name="timeStamp" value="162" />
+          <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="163" />
+          <line>61</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/questTask/QuestTaskController.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="189" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
           <line>64</line>
-          <option name="timeStamp" value="164" />
+          <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="165" />
+          <line>72</line>
+          <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="166" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="169" />
+          <line>79</line>
+          <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="170" />
+          <line>85</line>
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/questTask/QuestTaskService.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/autentification/LoginController.java</url>
@@ -481,31 +451,13 @@
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>24</line>
-          <properties class="com.wizards.quest_task.controller.quest.QuestController" method="createQuest">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/VideoUploadService.java</url>
+          <line>34</line>
+          <properties class="com.wizards.quest_task.service.fileUpload.VideoUploadService" method="uploadFile">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/controller/quest/QuestController.java</url>
-          <line>37</line>
-          <properties class="com.wizards.quest_task.controller.quest.QuestController" method="deleteQuest">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="115" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wizards/quest_task/service/fileUpload/FileUploadService.java</url>
-          <line>61</line>
-          <properties class="com.wizards.quest_task.service.fileUpload.FileUploadService" method="uploadTaskPicture">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="127" />
+          <option name="timeStamp" value="171" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

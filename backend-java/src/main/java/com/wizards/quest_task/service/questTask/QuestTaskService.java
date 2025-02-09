@@ -1,6 +1,7 @@
 package com.wizards.quest_task.service.questTask;
 
 import com.wizards.quest_task.authentication.OauthAndPrincipalAuthController;
+import com.wizards.quest_task.service.fileUpload.VideoUploadService;
 import com.wizards.quest_task.model.QuestModel;
 import com.wizards.quest_task.model.QuestTaskModel;
 import com.wizards.quest_task.model.UserModel;
@@ -10,12 +11,10 @@ import com.wizards.quest_task.service.fileUpload.FileUploadService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,12 +33,15 @@ public class QuestTaskService {
     QuestRepository questRepository;
     @Autowired
     OauthAndPrincipalAuthController oauthAndPrincipalAuthController;
+    @Autowired
+    VideoUploadService videoUploadServiceService;
 
     @Transactional
     public void createTask(Principal principal,
                            OAuth2User authentication,
                            QuestTaskModel questTaskModel,
                            MultipartFile photo,
+                           MultipartFile video,
                            UUID questID) throws IOException {
 
         UserModel currentUser = oauthAndPrincipalAuthController.getCurrentUser(principal, authentication);
@@ -49,8 +51,13 @@ public class QuestTaskService {
             List<QuestTaskModel> existedTasks = taskRepository.findAllByParentQuestId(currentQuest.getId());
             for (QuestTaskModel task : existedTasks) {
                 if (task.getPlaceInQuestQueue() == questTaskModel.getPlaceInQuestQueue()) {
-                    Path currentPhoto = Path.of(task.getPhotoForTask());
-                    Files.deleteIfExists(currentPhoto);
+                    if (task.getPhotoForTask() != null) {
+                        Path currentPhoto = Path.of(task.getPhotoForTask());
+                        Files.deleteIfExists(currentPhoto);
+                    } else if (task.getVideoForTask() != null) {
+                        Path currentVideo = Path.of(task.getVideoForTask());
+                        Files.deleteIfExists(currentVideo);
+                    }
                     taskRepository.delete(task);
                     break;
                 }
@@ -85,7 +92,7 @@ public class QuestTaskService {
                         currentTask.setAnswerVariation4(questTaskModel.getAnswerVariation4());
                         break;
                     case VIDEO:
-                        currentTask.setVideoForTask(questTaskModel.getVideoForTask());
+                        currentTask.setVideoForTask(videoUploadServiceService.uploadFile(video, principal, authentication, currentTask.getId()));
                         currentTask.setQuestionForTask(questTaskModel.getQuestionForTask());
                         currentTask.setAnswerVariation1(questTaskModel.getAnswerVariation1());
                         currentTask.setAnswerVariation2(questTaskModel.getAnswerVariation2());
@@ -102,7 +109,7 @@ public class QuestTaskService {
                         currentTask.setExpectedAnswerForFreeQuestion(questTaskModel.getExpectedAnswerForFreeQuestion());
                         break;
                     case VIDEOWITHFREEANSWER:
-                        currentTask.setVideoForTask(questTaskModel.getVideoForTask());
+                        currentTask.setVideoForTask(videoUploadServiceService.uploadFile(video, principal, authentication, currentTask.getId()));
                         currentTask.setExpectedAnswerForFreeQuestion(questTaskModel.getExpectedAnswerForFreeQuestion());
                         break;
                 }

@@ -25,6 +25,16 @@ services:
     ports:
       - "5433:5432"
 
+  python_app:
+    build: 
+     context: ../backend-python
+     dockerfile: ../backend-python/Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - quest_db
+
+
 
 
 

@@ -32,7 +32,7 @@ public class QuestModel {
     private LocalDate creationDate = LocalDate.now();
 
     @Column(nullable = true)
-    private Integer rating;
+    private Double rating;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")

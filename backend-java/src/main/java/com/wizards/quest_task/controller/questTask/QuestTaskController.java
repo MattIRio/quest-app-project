@@ -30,13 +30,14 @@ public class QuestTaskController {
                                                     @AuthenticationPrincipal OAuth2User authentication,
                                                     @RequestParam String questTaskModel,
                                                     @RequestParam(required = false) MultipartFile photo,
+                                                    @RequestParam(required = false) MultipartFile video,
                                                     @RequestParam UUID questID) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             QuestTaskModel task = objectMapper.readValue(questTaskModel, new TypeReference<QuestTaskModel>() {});
 
 
-                questTaskService.createTask(principal, authentication, task, photo, questID);
+                questTaskService.createTask(principal, authentication, task, photo, video, questID);
 
             return ResponseEntity.ok("Task were successfully created");
         } catch (Exception e) {

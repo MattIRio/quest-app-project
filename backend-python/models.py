@@ -6,7 +6,7 @@ import uuid
 db = SQLAlchemy()
 
 class Quest(db.Model):
-    __tablename__ = 'quest_task'
+    __tablename__ = 'quest_model'
 
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
@@ -57,3 +57,28 @@ class Quest(db.Model):
 
     def __repr__(self):
         return '<Quest %r>' % self.name
+
+
+class UserComplitedQuests(db.Model):
+    __tablename__ = 'user_completed_quests'
+
+    quest_id = db.Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        unique=False,
+        nullable=False
+    )
+
+    user_id = db.Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        unique=False,
+        nullable=False
+    )
+
+    def __init__(self, quest_id, user_id):
+        self.quest_id = quest_id
+        self.user_id = user_id
+
+
+

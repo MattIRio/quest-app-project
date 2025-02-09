@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { authService } from "../../services/authService";
-import MyButton from "../../UI/button/MyButton";
+import { MyButton } from "../../UI/button/MyButton.jsx";
 import MyInput from "../../UI/input/MyInput.jsx"
 
 

@@ -1,10 +1,8 @@
 .myButton {
-
    padding: 10px 30px;
    border-radius: 25px;
-
+   border: 1px solid #ddd;
    transition: 0.3s;
-
 
 }
 

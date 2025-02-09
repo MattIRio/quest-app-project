@@ -8,7 +8,8 @@ const Navbar = () => {
 
    return (
       <div className='navbar'>
-         <Link to={'/lesson'}>Логін</Link>
+         <Link to={'/main'}>Профіль</Link>
+         <Link to={'/main'}>Квести</Link>
       </div>
    )
 }

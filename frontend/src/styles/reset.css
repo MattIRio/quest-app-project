@@ -65,6 +65,11 @@ input::-ms-clear {
    display: none;
 }
 
+fieldset {
+   border-radius: 20px !important;
+
+}
+
 button {
    cursor: pointer;
    /* color: white */

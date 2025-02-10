@@ -19,7 +19,7 @@ export function TaskNavigation({ tasks, currentTask, setCurrentTask, answers }) 
                   {index + 1}
                </button>
                {hoveredTask === index && (
-                  <div className="tooltip tooltip-animate">{task.question}</div>
+                  <div className="tooltip tooltip-animate">{task.title}</div>
                )}
             </div>
          ))}

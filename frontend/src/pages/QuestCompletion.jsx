@@ -13,7 +13,7 @@ export default function QuestCompletion() {
    const [answers, setAnswers] = useState({});
    const [completed, setCompleted] = useState(false);
    const [results, setResults] = useState([]);
-   const [timeLeft, setTimeLeft] = useState(300);
+   const [timeLeft, setTimeLeft] = useState(30);
    const [isTimerRunning, setIsTimerRunning] = useState(true);
 
    useEffect(() => {
@@ -54,18 +54,28 @@ export default function QuestCompletion() {
 
    return (
       <ContainerBlurBg>
-         <h1>{questData.title}</h1>
-         <p>{questData.description}</p>
-         <Timer timeLeft={timeLeft} />
-         <TaskNavigation tasks={questData.tasks} currentTask={currentTask} setCurrentTask={setCurrentTask} answers={answers} />
-         {
-            completed
-               ? <TaskResults results={results} totalTasks={questData.tasks.length} />
-               : <><TaskView task={questData.tasks[currentTask]} currentTask={currentTask} answers={answers} handleAnswer={handleAnswer} handleTextAnswer={handleTextAnswer} />
-                  {Object.keys(answers).length === questData.tasks.length && (
-                     <button className="finish-btn" onClick={finishQuest}>Завершити квест</button>
-                  )}</>
-         }
+         <div style={{ display: "flex" }}>
+            <div>
+               <h1>{questData.title}</h1>
+               <p>{questData.description}</p>
+               <Timer timeLeft={timeLeft} />
+            </div>
+            <TaskNavigation tasks={questData.tasks} currentTask={currentTask} setCurrentTask={setCurrentTask} answers={answers} />
+         </div>
+         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+
+            {
+               completed
+                  ? <TaskResults results={results} totalTasks={questData.tasks.length} />
+                  : <>
+                     <TaskView task={questData.tasks[currentTask]} currentTask={currentTask} answers={answers} handleAnswer={handleAnswer} handleTextAnswer={handleTextAnswer} />
+                     {Object.keys(answers).length === questData.tasks.length && (
+                        <button className="finish-btn" onClick={finishQuest}>Завершити квест</button>
+                     )}
+                  </>
+            }
+         </div>
+
       </ContainerBlurBg>
    );
 }

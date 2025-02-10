@@ -2,6 +2,8 @@ import React, { useMemo, useState } from "react";
 import { tagsList } from "../../constants/temporary/quests";
 import { Box } from "@mui/material";
 
+
+
 const TagList = ({ selectedTags, handleTagClick }) => {
    const tagColors = useMemo(() => {
       const colors = {};
@@ -31,10 +33,10 @@ const TagList = ({ selectedTags, handleTagClick }) => {
                key={tag}
                onClick={() => handleTagClick(tag)}
                style={{
-                  border: `4px solid ${tagColors[tag]}`,
+                  border: `1px solid ${tagColors[tag]}`,
                   background: selectedTags.includes(tag) ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.2)",
                   borderRadius: 20,
-                  padding: 5,
+                  padding: 10,
                   margin: 5,// Додаємо відступ між кнопками
 
                }}

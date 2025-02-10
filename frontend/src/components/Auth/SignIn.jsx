@@ -12,21 +12,19 @@ export const SignIn = () => {
 
    const redirectOnAuth = useRedirectOnAuth();
 
-   // Використовуємо useLazyQuery для відкладеного виклику
-   const [signIn, { data, error, isLoading }] = authService.useLazySignInQuery();
+   const [signIn, { isLoading }] = authService.useSignInMutation();
 
    const handleLogin = async () => {
       try {
          const { data } = await signIn({ email, password }); // викликаємо запит
          console.log(data);
-         redirectOnAuth(); // редірект після успішної автентифікації
+         redirectOnAuth();
       } catch (err) {
          console.error('Failed to sign in:', err);
       }
    };
 
    if (isLoading) return <>Loading.........................</>
-
 
    return (
       <div className="authForm__item">

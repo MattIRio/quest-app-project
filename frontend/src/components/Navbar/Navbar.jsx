@@ -10,6 +10,8 @@ const Navbar = () => {
       <div className='navbar'>
          <Link to={'/profile'}>Профіль</Link>
          <Link to={'/main'}>Квести</Link>
+         <Link to={'/auth'}>Auth</Link>
+
       </div>
    )
 }

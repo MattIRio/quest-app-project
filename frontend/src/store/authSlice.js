@@ -25,20 +25,23 @@ const authSlice = createSlice({
       builder.addMatcher(
          authService.endpoints.signUp.matchFulfilled,
          (state, action) => {
-            state.user = action.payload.user
+            state.user = JSON.stringify({
+               username: action.payload.userName,
+               email: action.payload.email
+            })
             state.isAuthenticated = true;
-            state.accessToken = action.payload.accessToken
-            localStorage.setItem("username", action.payload.user.username)
+            localStorage.setItem("username", action.payload.userName)
          }
       );
       builder.addMatcher(
          authService.endpoints.signIn.matchFulfilled,
          (state, action) => {
-            state.user = action.payload.user
+            // state.user = JSON.stringify({
+            //    username: action.payload.userName,
+            //    email: action.payload.email
+            // })
             state.isAuthenticated = true;
-            state.accessToken = action.payload.accessToken
-            localStorage.setItem("username", action.payload.user.username)
-            localStorage.setItem("accessToken", action.payload.accessToken)
+            // localStorage.setItem("username", action.payload.userName)
          }
       );
       builder.addMatcher(
@@ -46,7 +49,6 @@ const authSlice = createSlice({
          (state) => {
             state.user = null
             state.isAuthenticated = false;
-            state.accessToken = null
             localStorage.removeItem("username")
          }
       )

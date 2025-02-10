@@ -1,7 +1,7 @@
 export function TaskView({ task, currentTask, answers, handleAnswer, handleTextAnswer }) {
    return (
       <>
-         <h2>{task.title}</h2>
+         <h2>{currentTask + 1}. {task.title}</h2>
          <p>{task.question}</p>
          {task.type === "multiple-choice" ? (
             <div className="options">

@@ -3,17 +3,17 @@ import { useState } from "react"
 import { authService } from "../../services/authService";
 import { MyButton } from "../../UI/button/MyButton.jsx";
 import MyInput from "../../UI/input/MyInput.jsx"
+import { useNavigate } from "react-router-dom";
 
 
 
 export const SignUp = () => {
 
    const [userData, setUserData] = useState({
-      username: "",
+      userName: "",
       email: "",
       password: ""
    });
-
    const handleInputChange = (e) => {
       const { name, value } = e.target;
       setUserData((prev) => ({ ...prev, [name]: value }));
@@ -24,7 +24,9 @@ export const SignUp = () => {
 
    const handleRegistration = async () => {
       try {
-         await signUp(userData).unwrap();
+         const data = await signUp(userData).unwrap();
+         console.log(data)
+         redirectOnAuth()
       } catch (err) {
          console.error("Failed to register:", err);
       }
@@ -33,6 +35,7 @@ export const SignUp = () => {
    const handleLogout = async () => {
       try {
          await signOut('').unwrap();
+
       } catch (err) {
          console.error("Failed to log out:", err);
       }
@@ -57,8 +60,8 @@ export const SignUp = () => {
          />
          <MyInput
             type="text"
-            name="username"
-            value={userData.username}
+            name="userName"
+            value={userData.userName}
             onChange={handleInputChange}
             placeholder="Username"
          />

@@ -6,6 +6,7 @@ export const useRedirectOnAuth = () => {
 
    const redirectOnAuth = () => {
       const from = location.state?.from?.pathname;
+      console.log(from)
       navigate(from);
    };
 

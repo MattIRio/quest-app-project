@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const authService = createApi({
    reducerPath: "authService",
-   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+   baseQuery: fetchBaseQuery({ baseUrl: "https://quests-app-b4a0b43bd55f.herokuapp.com" }),
    endpoints: (builder) => ({
       signUp: builder.mutation({
          query: (body) => ({
@@ -11,10 +11,10 @@ export const authService = createApi({
             body: body
          })
       }),
-      signIn: builder.query({
+      signIn: builder.mutation({
          query: ({ email, password }) => ({
             url: `/login?email=${email}&password=${password}`,
-            method: "GET",
+            method: "POST",
          }),
       }),
       signOut: builder.mutation({

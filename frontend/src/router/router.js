@@ -8,12 +8,11 @@ import Profile from "../pages/Profile.jsx";
 export const publicRoutes = [
    { path: "/auth", component: Auth },
    { path: "/main", component: Main },
-   { path: "/create_quest", component: CreateQuest },
-   { path: "/quests/:questId", component: QuestCompletion },
-   { path: "/profile", component: Profile },
-
 ]
 
 export const privateRoutes = [
    { path: "/main", component: Main },
+   { path: "/create_quest", component: CreateQuest },
+   { path: "/quests/:questId", component: QuestCompletion },
+   { path: "/profile", component: Profile }
 ]

@@ -1,0 +1,98 @@
+.task-map {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin: 15px 0;
+   position: relative;
+}
+
+.task-container {
+   position: relative;
+}
+
+.task-btn {
+   width: 40px;
+   height: 40px;
+   border: none;
+   border-radius: 50%;
+   background: #ddd;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.task-btn.active {
+   background: #007bff;
+   color: white;
+}
+
+.task-btn.completed {
+   background: #28a745;
+   color: white;
+}
+
+.tooltip {
+   position: absolute;
+   bottom: 50px;
+   left: 50%;
+   transform: translateX(-50%);
+   background: rgba(0, 0, 0, 0.8);
+   color: white;
+   padding: 8px;
+   border-radius: 5px;
+   width: 250px;
+   font-size: 14px;
+   text-align: center;
+   z-index: 10;
+   opacity: 0.9;
+}
+
+.options {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.option-btn {
+   padding: 10px;
+   border: none;
+   background: #ddd;
+   cursor: pointer;
+   border-radius: 5px;
+}
+
+.option-btn:hover {
+   background: #bbb;
+}
+
+.option-btn.selected {
+   background: #007bff;
+   color: white;
+}
+
+.text-input {
+   width: 80%;
+   padding: 10px;
+   font-size: 16px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+}
+
+.finish-btn {
+   margin-top: 20px;
+   padding: 10px;
+   background: #28a745;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.result {
+   font-size: 18px;
+   font-weight: bold;
+   margin-top: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   line-height: 150%;
+}

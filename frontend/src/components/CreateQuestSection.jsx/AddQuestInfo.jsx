@@ -15,7 +15,7 @@ export default function AddQuestInfo() {
    };
 
    return (
-      <div style={{ borderRadius: 15, padding: "30px", background: "rgba(255,255,255,0.4)" }}>
+      <div style={{ borderRadius: 15, padding: "30px", background: "rgba(255,255,255,0.7)" }}>
          <Typography variant="h4" gutterBottom>
             Create new quest
          </Typography>

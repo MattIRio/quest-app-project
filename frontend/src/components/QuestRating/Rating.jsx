@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { quests } from '../../constants/temporary/quests';
 import QuestFilter from './QuestFilter';
 import { Box, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
+import ContainerBlurBg from '../../UI/container/ContainerBlurBg';
+import { Link } from 'react-router-dom';
 
 export default function Rating() {
    const [filteredQuests, setFilteredQuests] = useState(quests);
@@ -16,7 +18,7 @@ export default function Rating() {
       setFilteredQuests(filtered);
    };
    return (
-      <><div style={{ backdropFilter: "blur(17px)", background: "rgba(255,255,255,0.35)", padding: 30, borderRadius: 20 }}>
+      <><ContainerBlurBg>
          <Typography variant="h5" gutterBottom style={{ marginTop: "20px" }}>
             Рейтинг квестів
          </Typography>
@@ -24,24 +26,26 @@ export default function Rating() {
             <QuestFilter onFilterChange={handleFilterChange} />
             <List>
                {filteredQuests.map((quest, index) => (
-                  <ListItem
-                     key={quest.id}
-                     style={{
-                        backgroundColor: index & 1 ? 'rgba(255,255,255,0.1)' : 'transparent',
-                        borderTop: index & 1 ? "1px solid #ddddd" : "",
-                        borderBottom: index & 1 ? "1px solid #ddddd" : "",
-                     }}
-                  >
-                     <ListItemText
-                        primary={quest.name}
-                        secondary={`Рейтинг: ${quest.rating}`}
-                     />
-                  </ListItem>
+                  <Link key={quest.id} to={`/quests/${quest.id}`} >
+                     <ListItem
+                        style={{
+                           backgroundColor: index & 1 ? 'rgba(255,255,255,0.3)' : 'transparent',
+                           borderTop: index & 1 ? "1px solid #ddddd" : "",
+                           borderBottom: index & 1 ? "1px solid #ddddd" : "",
+                           cursor: 'pointer'
+                        }}
+                     >
+                        <ListItemText
+                           primary={quest.name}
+                           secondary={`Рейтинг: ${quest.rating}`}
+                        />
+                     </ListItem>
+                  </Link>
                ))}
             </List>
 
          </Box>
-      </div>
+      </ContainerBlurBg>
       </>
 
    )

@@ -75,7 +75,7 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
    }), [choices, correctAnswer, addChoice, answerType]);
 
    return (
-      <div style={{ borderRadius: 15, background: "rgba(255,255,255,0.4)" }}>
+      <div style={{ borderRadius: 15, background: "rgba(255,255,255,0.7)" }}>
          <div style={{ display: "flex", flexDirection: "column", padding: "20px", gap: "20px" }}>
             <h2>Task {task.id}</h2>
             <TextField

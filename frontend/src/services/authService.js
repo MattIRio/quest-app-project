@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const authService = createApi({
    reducerPath: "authService",
-   baseQuery: fetchBaseQuery({ baseUrl: "https://quests-app-b4a0b43bd55f.herokuapp.com" }),
+   baseQuery: fetchBaseQuery({ baseUrl: "https://quests-app-b4a0b43bd55f.herokuapp.com", credentials: 'include' }),
    endpoints: (builder) => ({
       signUp: builder.mutation({
          query: (body) => ({

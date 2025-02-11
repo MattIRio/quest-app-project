@@ -16,7 +16,7 @@ export const SignIn = () => {
 
    const handleLogin = async () => {
       try {
-         const { data } = await signIn({ email, password }); // викликаємо запит
+         const data = await signIn({ email, password });
          console.log(data);
          redirectOnAuth();
       } catch (err) {

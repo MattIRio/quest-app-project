@@ -1,13 +1,15 @@
 .myButton {
    padding: 10px 30px;
    border-radius: 25px;
-   border: 1px solid #ddd;
+   border: 1px solid #38127e;
    transition: 0.3s;
-   width: 100%;
+   /* width: 100%; */
    display: block;
+   /* flex-grow: 1; */
 }
 
 .myButton:hover {
    background: #585acab3;
+   color: white;
    transition: 0.3s;
 }

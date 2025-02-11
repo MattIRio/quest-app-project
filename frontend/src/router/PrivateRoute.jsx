@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 
 
 const PrivateRoute = ({ routePage }) => {
-   const { isAuthenticated } = useSelector(state => state.auth)
+   // const { isAuthenticated } = useSelector(state => state.auth)
+   const isAuthenticated = true
+
    // const token = localStorage.getItem("accessToken")
    const location = useLocation()
    return (

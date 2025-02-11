@@ -2,6 +2,7 @@ import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Button } fro
 import TagList from "./TagList";
 import { useState } from "react";
 import CreateQuestButton from "../CreateQuestSection.jsx/CreateQuestButton";
+import { MyButton } from "../../UI/button/MyButton";
 
 const QuestFilter = ({ onFilterChange }) => {
    const defaultFilters = {
@@ -69,7 +70,7 @@ const QuestFilter = ({ onFilterChange }) => {
             <CreateQuestButton />
          </Box>
          <TagList handleTagClick={handleTagClick} selectedTags={selectedTags} />
-         <Button variant="outlined" onClick={handleClearFilters}>Очистити фільтри</Button>
+         <MyButton onClick={handleClearFilters} text={"Очистити фільтри"} ></MyButton>
       </Box>
    );
 };

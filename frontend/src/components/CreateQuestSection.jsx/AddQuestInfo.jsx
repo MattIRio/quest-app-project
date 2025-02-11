@@ -2,11 +2,7 @@ import { useState } from "react";
 import { Box, TextField, Typography } from "@mui/material";
 import { MultimediaInput } from "./AddTaskkSection/MultimediaInput";
 
-export default function AddQuestInfo() {
-   const [questData, setQuestData] = useState({
-      title: "",
-      description: "",
-   });
+export default function AddQuestInfo({ questData, setQuestData }) {
 
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -20,16 +16,16 @@ export default function AddQuestInfo() {
             Create new quest
          </Typography>
 
-         <div style={{ width: "100%", display: "flex", gap: 20 }}>
+         <div style={{ width: "100%", display: "flex", flexWrap: "wrap", gap: 20 }}>
             <Box sx={{ display: "flex" }}>
                <MultimediaInput />
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 3, flex: "1 1 100%" }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 3, flex: "1 1 auto" }}>
                <TextField
                   fullWidth
                   label="Title"
-                  name="title"
-                  value={questData.title}
+                  name="name"
+                  value={questData.name}
                   onChange={handleChange}
                />
                <TextField

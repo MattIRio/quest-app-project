@@ -7,6 +7,8 @@ import { MultimediaInput } from "./MultimediaInput";
 import { TrueFalseAnswer } from "./TrueFalseAnswer";
 import { FreeAnswer } from "./FreeAnswer";
 import { MyButton } from "../../../UI/button/MyButton";
+import { Modal } from "@mui/material";
+import { ImageSelectionAnswer } from "./ImageSelectionAnswer";
 
 
 
@@ -31,12 +33,22 @@ const determineTaskType = (multimediaStatus, answerType) => {
    }
 };
 
+
+
+
+
+
+
+
+
+
 export default function CreateTaskForm({ task, onUpdateTask }) {
    const [answerType, setAnswerType] = useState(task?.answerType || "choice");
    const [taskDescription, setTitle] = useState(task?.taskDescription || "");
-   const [questionForTasks, setDescription] = useState(task?.questionForTasks || "");
+   const [questionForTask, setDescription] = useState(task?.questionForTask || "");
    const { choices, correctAnswer, setCorrectAnswer, handleChoiceChange, addChoice, removeChoice } = useTaskChoices();
    const [multimediaStatus, setMultimediaStatus] = useState("hasNotMedia")
+   const [multimediaUrl, setMultimediaUrl] = useState("")
 
    const convertedChoicesForAPI = (choices) => {
       const convertedChoices = {}
@@ -49,30 +61,26 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
 
    const handleSubmitTask = () => {
       const updatedTask = {
-         id: task?.id,
+         id: task.id,
          taskDescription,
-         questionForTasks,
-         correctAnswer,
+         questionForTask,
+         placeInQuestQueue: task.id,
+         expectedAnswer: correctAnswer,
          ...convertedChoicesForAPI(choices),
          taskType: determineTaskType(multimediaStatus, answerType)
       };
+      console.log(updatedTask)
       onUpdateTask(updatedTask.id, updatedTask);
    };
 
-   const answerComponents = useMemo(() => ({
-      choice: (
-         <ChoiceAnswer
-            choices={choices}
-            correctAnswer={correctAnswer}
-            onChoiceChange={handleChoiceChange}
-            onAddChoice={addChoice}
-            onRemoveChoice={removeChoice}
-            onSelectCorrect={setCorrectAnswer}
-         />
-      ),
-      trueFalse: <TrueFalseAnswer correctAnswer={correctAnswer} setCorrectAnswer={setCorrectAnswer} />,
-      freeAnswer: <FreeAnswer correctAnswer={correctAnswer} setCorrectAnswer={setCorrectAnswer} />
-   }), [choices, correctAnswer, addChoice, answerType]);
+   const answerComponents = useMemo(() => (
+      {
+         choice: (<ChoiceAnswer choices={choices} correctAnswer={correctAnswer} onChoiceChange={handleChoiceChange} onAddChoice={addChoice} onRemoveChoice={removeChoice} onSelectCorrect={setCorrectAnswer} />),
+         imageSelection: (<ImageSelectionAnswer correctAnswer={correctAnswer} setCorrectAnswer={setCorrectAnswer} imageUrl={multimediaStatus === "hasImage" ? multimediaUrl : ""} />),
+         trueFalse: (<TrueFalseAnswer correctAnswer={correctAnswer} setCorrectAnswer={setCorrectAnswer} />),
+         freeAnswer: (<FreeAnswer correctAnswer={correctAnswer} setCorrectAnswer={setCorrectAnswer} />)
+      }
+   ), [choices, correctAnswer, addChoice, answerType]);
 
    return (
       <div style={{ borderRadius: 15, background: "rgba(255,255,255,0.7)" }}>
@@ -89,10 +97,13 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
                label="Description"
                multiline
                minRows={3}
-               value={questionForTasks}
+               value={questionForTask}
                onChange={(e) => setDescription(e.target.value)}
             />
-            <MultimediaInput onUpload={(type) => setMultimediaStatus(type)} />
+            <MultimediaInput onUpload={(url, type) => {
+               setMultimediaUrl(url)
+               setMultimediaStatus(type)
+            }} />
             <h3>Тип відповіді</h3>
             <AnswerTypeSelector answerType={answerType} onChange={setAnswerType} />
             {answerComponents[answerType]}

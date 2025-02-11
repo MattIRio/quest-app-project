@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238b4beb-2665-4f7d-badc-7125e09176c3" name="Changes" comment="fix bug">
-      <change afterPath="$PROJECT_DIR$/frontend/src/services/userService.js" afterDir="false" />
+    <list default="true" id="238b4beb-2665-4f7d-badc-7125e09176c3" name="Changes" comment="add service for user data">
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/getQuestsService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +117,7 @@
       <workItem from="1739201121365" duration="2165000" />
       <workItem from="1739219271671" duration="184000" />
       <workItem from="1739285152750" duration="3402000" />
-      <workItem from="1739290207360" duration="365000" />
+      <workItem from="1739290207360" duration="2032000" />
     </task>
     <task id="LOCAL-00001" summary="all changes(add user page)">
       <option name="closed" value="true" />
@@ -135,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739137118029</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add service for user data">
+      <option name="closed" value="true" />
+      <created>1739290976237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739290976237</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +154,7 @@
     <MESSAGE value="delete unused" />
     <MESSAGE value="all changes(add user page)" />
     <MESSAGE value="fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug" />
+    <MESSAGE value="add service for user data" />
+    <option name="LAST_COMMIT_MESSAGE" value="add service for user data" />
   </component>
 </project>

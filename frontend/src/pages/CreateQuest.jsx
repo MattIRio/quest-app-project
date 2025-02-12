@@ -10,7 +10,7 @@ export default function CreateQuest() {
    const [questData, setQuestData] = useState({
       name: "",
       description: "",
-      timeLimit: 300
+      timeLimit: 30000
    });
 
    const [tasks, setTasks] = useState([]); // Масив для зберігання тасок

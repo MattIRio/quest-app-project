@@ -80,7 +80,7 @@ export default function Rating() {
                                  </div>
                                  <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <StarIcon style={{ marginRight: '5px', color: quest.rating ? 'gold' : 'gray' }} />
-                                    Рейтинг: {quest.rating !== null ? quest.rating : 'Немає рейтингу'}
+                                    Рейтинг: {quest.rating !== null ? quest.rating : '-'}
                                  </div>
                               </div>
                            </li>

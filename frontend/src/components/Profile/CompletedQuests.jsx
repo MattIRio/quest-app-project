@@ -9,13 +9,12 @@ import {
    TableHead,
    TablePagination,
    TableRow,
-   Typography
 } from "@mui/material";
-import TablePaginationActions from "@mui/material/TablePagination/TablePaginationActions";
 import { format } from "date-fns";
 import React, { useState } from "react";
 
 export default function CompletedQuests({ data }) {
+
    const [page, setPage] = useState(0);
    const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -28,7 +27,7 @@ export default function CompletedQuests({ data }) {
       setPage(0);
    };
 
-
+   console.log(data)
    return (
       <>
          <TableContainer>
@@ -37,29 +36,22 @@ export default function CompletedQuests({ data }) {
                   <TableRow>
                      <TableCell>Quest Name</TableCell>
                      <TableCell>Rating</TableCell>
-                     <TableCell>Tags</TableCell>
                      <TableCell>Completion Date</TableCell>
+                     <TableCell>Score</TableCell>
                   </TableRow>
                </TableHead>
                <TableBody>
                   {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((quest, index) => (
                      <TableRow key={index}>
-                        <TableCell>{quest.name}</TableCell>
+                        <TableCell>{quest.quest.name}</TableCell>
                         <TableCell>
-                           <Rating value={quest.rating} readOnly />
-                        </TableCell>
-                        <TableCell>
-                           {quest.tags.map((tag) => (
-                              <Chip
-                                 key={tag}
-                                 label={tag}
-                                 size="small"
-                                 sx={{ mr: 0.5 }}
-                              />
-                           ))}
+                           <Rating value={quest.quest.rating} readOnly />
                         </TableCell>
                         <TableCell>
                            {format(quest.completionDate, "MMM dd, yyyy")}
+                        </TableCell>
+                        <TableCell>
+                           {quest.score}
                         </TableCell>
                      </TableRow>
                   ))}

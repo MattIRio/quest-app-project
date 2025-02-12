@@ -39,7 +39,7 @@ const Profile = () => {
                <Typography variant="h5" >
                   Completed Quests
                </Typography>
-               <CompletedQuests data={completedQuestsList} />
+               <CompletedQuests data={data.completedQuests} />
             </Grid2>
          </ContainerBlurBg>
       </Container>

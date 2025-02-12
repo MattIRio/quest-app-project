@@ -7,8 +7,7 @@ import QuestCompletion from "../components/QuestCompletionSection/QuestCompletio
 
 
 export const publicRoutes = [
-   { path: "/auth", component: Auth },
-   { path: "/main", component: Main },
+   { path: "/auth", component: Auth }
 ]
 
 export const privateRoutes = [

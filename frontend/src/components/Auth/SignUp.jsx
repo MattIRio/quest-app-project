@@ -26,7 +26,7 @@ export const SignUp = () => {
       try {
          const data = await signUp(userData).unwrap();
          console.log(data)
-         redirectOnAuth()
+         // redirectOnAuth()
       } catch (err) {
          console.error("Failed to register:", err);
       }

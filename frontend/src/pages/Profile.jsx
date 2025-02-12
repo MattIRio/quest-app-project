@@ -1,45 +1,49 @@
 import React from "react";
 import {
-    Container,
-    Grid2,
-    Typography,
-    Paper,
-    Stack,
-    styled
+   Container,
+   Grid2,
+   Typography,
+   Stack,
 } from "@mui/material";
 import ChangeAvatar from "../components/Profile/ChangeAvatar";
 import DataField from "../components/Profile/DataField.jsx";
 import CompletedQuests from "../components/Profile/CompletedQuests.jsx";
-import {completedQuestsList} from "../constants/temporary/quests.js";
+import { completedQuestsList } from "../constants/temporary/quests.js";
+import ContainerBlurBg from "../UI/container/ContainerBlurBg.jsx";
+import { userService } from "../services/userService.js";
+import Loader from "../UI/Loader/Loader.jsx";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
-const ProfileContainer = styled(Paper)(({ theme }) => ({
-    padding: theme.spacing(3),
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3)
-}));
+
 
 const Profile = () => {
 
-    return (
-        <Container maxWidth="lg">
-            <ProfileContainer elevation={3}>
-                <Grid2 container spacing={4}>
-                   <ChangeAvatar />
-                    <Stack spacing={3} alignItems="start" sx={{py:4}}>
-                        <DataField data="Joe Dohn" style="nickname" />
-                        <DataField data="example.gmail.com" style="email" />
-                    </Stack>
-                </Grid2>
-                <Grid2 container spacing={2}>
-                    <Typography variant="h5" gutterBottom>
-                        Completed Quests
-                    </Typography>
-                    <CompletedQuests data={completedQuestsList} />
-                </Grid2>
-            </ProfileContainer>
-        </Container>
-    );
+
+   const { data, isLoading } = userService.useGetUserInfoQuery()
+   const navigate = useNavigate()
+   if (isLoading) return <Loader />
+   if (!data) navigate("/auth")
+   console.log(currentData)
+   return (
+      <Container maxWidth="lg">
+         <ContainerBlurBg>
+            <Grid2 container spacing={4}>
+               <ChangeAvatar />
+               <Stack spacing={3} alignItems="start" sx={{ py: 4 }}>
+                  <DataField data={data.userName} style="nickname" />
+                  <>{data.email}</>
+               </Stack>
+            </Grid2>
+            <Grid2 container spacing={2}>
+               <Typography variant="h5" >
+                  Completed Quests
+               </Typography>
+               <CompletedQuests data={completedQuestsList} />
+            </Grid2>
+         </ContainerBlurBg>
+      </Container>
+   );
 };
 
 export default Profile;

@@ -19,9 +19,9 @@ const AuthForm = () => {
 
    const handleGitHubLogin = () => {
       const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${githubClientId}&redirect_uri=http://localhost:5173/login/oauth2/code/github&scope=user`;
-
       window.location.href = githubAuthUrl;
    };
+
    return (
 
       <div className="authForm">
@@ -38,7 +38,7 @@ const AuthForm = () => {
                   console.log('Success:', response);
                }}
                onError={() => console.log('Login Failed')}
-               redirectUri="http://localhost:5173/login/oauth2/code/google"
+               ux_mode="popup"
             />
          </GoogleOAuthProvider>
          <button onClick={handleGitHubLogin} className="oauth-button github-button">Вхід через GitHub</button>

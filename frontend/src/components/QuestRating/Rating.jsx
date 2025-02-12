@@ -1,52 +1,98 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { quests } from '../../constants/temporary/quests';
 import QuestFilter from './QuestFilter';
-import { Box, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
+import { Box, CircularProgress, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
 import ContainerBlurBg from '../../UI/container/ContainerBlurBg';
 import { Link } from 'react-router-dom';
-
+import { questService } from '../../services/questService';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import StarIcon from '@mui/icons-material/Star'
+import Loader from '../../UI/Loader/Loader';
 export default function Rating() {
-   const [filteredQuests, setFilteredQuests] = useState(quests);
-   const handleFilterChange = ({ search, rating, tags }) => {
-      let filtered = quests.filter((quest) =>
-         quest.name.toLowerCase().includes(search.toLowerCase())
-      );
-      if (tags.length) {
-         filtered = filtered.filter((quest) => tags.some((tag) => quest.tags.includes(tag)));
+
+   const { data: quests, isLoading, isError } = questService.useGetQuestsQuery({ page: 1, size: 20, sort: 'name' });
+
+   const [filteredQuests, setFilteredQuests] = useState([]);
+   const [filters, setFilters] = useState({ search: '', rating: 'desc', tags: [] });
+   console.log(isError)
+   useEffect(() => {
+      if (quests) {
+         // Оновити початковий стан при завантаженні quests
+         setFilteredQuests(quests);
       }
-      filtered.sort((a, b) => (rating === "asc" ? a.rating - b.rating : b.rating - a.rating));
-      setFilteredQuests(filtered);
+   }, [quests]);
+
+   const handleFilterChange = ({ search, rating, tags }) => {
+      // Оновлення фільтрів
+      setFilters({ search, rating, tags });
    };
+
+   useEffect(() => {
+      if (quests) {
+         let filtered = quests.filter((quest) =>
+            quest.name.toLowerCase().includes(filters.search.toLowerCase())
+         );
+         if (filters.tags.length) {
+            filtered = filtered.filter((quest) =>
+               quest.tags.some((tag) => filters.tags.includes(tag))
+            );
+         }
+         filtered.sort((a, b) => (filters.rating === "asc" ? a.rating - b.rating : b.rating - a.rating));
+         setFilteredQuests(filtered);
+      }
+   }, [quests, filters]);
+
+   if (isLoading) {
+      return (
+         <Loader />
+      );
+   }
+
    return (
-      <><ContainerBlurBg>
-         <Typography variant="h5" gutterBottom style={{ marginTop: "20px" }}>
-            Рейтинг квестів
-         </Typography>
-         <Box display="flex" flexDirection="column" gap={2}>
-            <QuestFilter onFilterChange={handleFilterChange} />
-            <List>
-               {filteredQuests.map((quest, index) => (
-                  <Link key={quest.id} to={`/quests/${quest.id}`} >
-                     <ListItem
-                        style={{
-                           backgroundColor: index & 1 ? 'rgba(255,255,255,0.3)' : 'transparent',
-                           borderTop: index & 1 ? "1px solid #ddddd" : "",
-                           borderBottom: index & 1 ? "1px solid #ddddd" : "",
-                           cursor: 'pointer'
-                        }}
-                     >
-                        <ListItemText
-                           primary={quest.name}
-                           secondary={`Рейтинг: ${quest.rating}`}
-                        />
-                     </ListItem>
-                  </Link>
-               ))}
-            </List>
+      <ContainerBlurBg>
+         <div style={{ marginTop: '20px' }}>
+            <h2 style={{ marginBottom: '20px' }}>Рейтинг квестів</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+               <QuestFilter onFilterChange={handleFilterChange} />
 
-         </Box>
+               <div>
+                  <ul style={{ padding: 0, listStyleType: 'none' }}>
+                     {filteredQuests.map((quest, index) => (
+                        <Link to={"/quests/" + quest.id}>
+                           <li
+                              key={quest.id}
+                              style={{
+                                 backgroundColor: index & 1 ? 'rgba(255,255,255,0.3)' : 'transparent',
+                                 borderTop: index & 1 ? "1px solid #ddddd" : "none",
+                                 borderBottom: index & 1 ? "1px solid #ddddd" : "none",
+                                 cursor: 'pointer',
+                                 padding: '10px',
+                              }}
+                           >
+                              <h3 style={{ margin: '0' }}>{quest.name}</h3>
+                              <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", flexWrap: "wrap" }}>
+                                 <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <QuestionAnswerIcon style={{ marginRight: '5px' }} />
+                                    Кількість запитань: {quest.amountOfQuestions}
+                                 </div>
+                                 <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <AccessTimeIcon style={{ marginRight: '5px' }} />
+                                    {quest.timeLimit} сек.
+                                 </div>
+                                 <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <StarIcon style={{ marginRight: '5px', color: quest.rating ? 'gold' : 'gray' }} />
+                                    Рейтинг: {quest.rating !== null ? quest.rating : 'Немає рейтингу'}
+                                 </div>
+                              </div>
+                           </li>
+                        </Link>
+
+                     ))}
+                  </ul>
+               </div>
+            </div>
+         </div>
       </ContainerBlurBg>
-      </>
-
    )
 }

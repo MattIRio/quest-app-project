@@ -5,7 +5,7 @@ import { authService } from "../services/authService";
 
 
 const initialState = {
-   user: null, accessToken: null, isAuthenticated: false
+   user: null, isAuthenticated: false
 }
 
 const authSlice = createSlice({

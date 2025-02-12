@@ -5,6 +5,7 @@ export function MultimediaInput({ onUpload }) {
    const [file, setFile] = useState(null);
    const inputFileRef = useRef(null);
    const fileUrlRef = useRef(null)
+
    const handleFileChange = (event) => {
       const selectedFile = event.target.files?.[0];
       if (!selectedFile) return;
@@ -13,7 +14,7 @@ export function MultimediaInput({ onUpload }) {
       fileUrlRef.current = URL.createObjectURL(selectedFile)
 
       if (onUpload) {
-         onUpload(fileUrlRef.current, fileType);
+         onUpload(fileUrlRef.current, fileType, selectedFile);
       }
       setFile(selectedFile);
    };

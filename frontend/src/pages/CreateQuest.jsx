@@ -37,15 +37,14 @@ export default function CreateQuest() {
          console.log(questID);
          await Promise.all([...tasks.map(item => {
             console.log(item)
-            let { id, ...dtoItem } = item
-            return addTaskToQuest({ questID, ...dtoItem }).unwrap()
+            let { id, ...body } = item
+            return addTaskToQuest({ questID, body }).unwrap()
          })])
          console.log("TASK CREATED")
       } catch (err) {
          console.error('Failed to sign in:', err);
       }
    };
-
 
    return (
       <>

@@ -17,6 +17,7 @@ export const SignIn = () => {
    const handleLogin = async () => {
       try {
          const data = await signIn({ email, password });
+         localStorage.setItem("email", email)
          console.log(data);
          redirectOnAuth();
       } catch (err) {

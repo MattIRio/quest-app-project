@@ -34,14 +34,6 @@ const determineTaskType = (multimediaStatus, answerType) => {
 };
 
 
-
-
-
-
-
-
-
-
 export default function CreateTaskForm({ task, onUpdateTask }) {
    const [answerType, setAnswerType] = useState(task?.answerType || "choice");
    const [taskDescription, setTitle] = useState(task?.taskDescription || "");
@@ -49,7 +41,7 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
    const { choices, correctAnswer, setCorrectAnswer, handleChoiceChange, addChoice, removeChoice } = useTaskChoices();
    const [multimediaStatus, setMultimediaStatus] = useState("hasNotMedia")
    const [multimediaUrl, setMultimediaUrl] = useState("")
-
+   const [multimediaFile, setMultimediaFile] = useState(null)
    const convertedChoicesForAPI = (choices) => {
       const convertedChoices = {}
       choices.forEach((item, index) => {
@@ -60,7 +52,8 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
    }
 
    const handleSubmitTask = () => {
-      const updatedTask = {
+      const formData = new FormData();
+      formData.append("task", JSON.stringify({
          id: task.id,
          taskDescription,
          questionForTask,
@@ -68,9 +61,15 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
          expectedAnswer: correctAnswer,
          ...convertedChoicesForAPI(choices),
          taskType: determineTaskType(multimediaStatus, answerType)
-      };
-      console.log(updatedTask)
-      onUpdateTask(updatedTask.id, updatedTask);
+      }));
+
+      if (multimediaFile) {
+         formData.append("PhotoForTask", multimediaFile);
+      }
+
+      console.log("Sending FormData:", formData);
+
+      onUpdateTask(task.id, formData);
    };
 
    const answerComponents = useMemo(() => (
@@ -100,9 +99,10 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
                value={questionForTask}
                onChange={(e) => setDescription(e.target.value)}
             />
-            <MultimediaInput onUpload={(url, type) => {
+            <MultimediaInput onUpload={(url, type, file) => {
                setMultimediaUrl(url)
                setMultimediaStatus(type)
+               setMultimediaFile(file)
             }} />
             <h3>Тип відповіді</h3>
             <AnswerTypeSelector answerType={answerType} onChange={setAnswerType} />

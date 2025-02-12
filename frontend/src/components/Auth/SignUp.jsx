@@ -3,7 +3,7 @@ import { useState } from "react"
 import { authService } from "../../services/authService";
 import { MyButton } from "../../UI/button/MyButton.jsx";
 import MyInput from "../../UI/input/MyInput.jsx"
-import { useNavigate } from "react-router-dom";
+import { useRedirectToMain } from "../../hooks/useRedirectToMain.js";
 
 
 
@@ -14,6 +14,8 @@ export const SignUp = () => {
       email: "",
       password: ""
    });
+
+   const back = useRedirectToMain()
    const handleInputChange = (e) => {
       const { name, value } = e.target;
       setUserData((prev) => ({ ...prev, [name]: value }));
@@ -26,6 +28,7 @@ export const SignUp = () => {
       try {
          const data = await signUp(userData).unwrap();
          console.log(data)
+         back()
          // redirectOnAuth()
       } catch (err) {
          console.error("Failed to register:", err);

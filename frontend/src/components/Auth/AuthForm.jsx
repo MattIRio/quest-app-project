@@ -41,7 +41,7 @@ const AuthForm = () => {
                ux_mode="popup"
             />
          </GoogleOAuthProvider>
-         <button onClick={handleGitHubLogin} className="oauth-button github-button">Вхід через GitHub</button>
+         {/* <button onClick={handleGitHubLogin} className="oauth-button github-button">Вхід через GitHub</button> */}
       </div>
    )
 }

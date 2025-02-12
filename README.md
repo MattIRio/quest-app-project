@@ -1,16 +1,19 @@
 # Virtual Quests - Interactive Platform
 
+# Link to Site
+"insert link"
+
 ## Description
 This project is a web platform for creating and completing interactive quests with multimedia elements. Users can create their own quests, configure tasks, and participate in quests created by others.
 
 ## Features
 ### 1. User Registration & Authentication:
 - Sign up via email or social media
-- Profile creation (avatar, name, quest history)
+- Profile creation (avatar, name, email, password)
 
 ### 2. Quest Creation:
 - Define quest title, description, number of tasks, and time limits
-- Add multimedia content (text, images, videos)
+- Add multimedia content (text, images, videos(unfinished))
 - Various question types: open-ended, multiple-choice, image-based object search
 
 ### 3. Quest Participation:
@@ -22,14 +25,8 @@ This project is a web platform for creating and completing interactive quests wi
 - Quest author ranking
 - Quest reviews and ratings (stars, comments)
 
-### 5. Additional Features:
-- Group quests with real-time chat
-- Location-based tasks
-- Gamification (rewards, achievements)
-- Admin module (content moderation)
-
 ## Technologies
-- **Backend**: Spring Boot (Java), PostgreSQL, WebSocket
-- **Frontend**: React.js (or Thymeleaf), Tailwind CSS
-- **Database**: PostgreSQL / MySQL
+- **Backend**: Spring Boot (Java), PostgreSQL, WebSocket, Python
+- **Frontend**: React.js, CSS, Mui, Rtk query, Witi
+- **Database**: PostgreSQL
 - **Deployment**: Heroku / Docker

@@ -1,11 +1,16 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import { privateRoutes, publicRoutes } from './router';
+import React from 'react';
+
+
+
 
 const AppRouter = () => {
    return (
       <>
          <Routes>
+
             {
                publicRoutes.map(route =>
                   <Route

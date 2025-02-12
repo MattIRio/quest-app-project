@@ -4,7 +4,24 @@
 }
 
 body {
-   background-color: var(--bg-color);
+   background: radial-gradient(ellipse at top, #6b126e, #e0992ec0, #60309e);
+   background-size: 300% 300%;
+   background-attachment: fixed;
+   animation: gradient-animation 20s ease infinite;
    color: var(--text-color);
    transition: background-color 1s, color 1s;
+}
+
+@keyframes gradient-animation {
+   0% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
+
+   100% {
+      background-position: 0% 50%;
+   }
 }

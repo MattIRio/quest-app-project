@@ -8,8 +8,10 @@ const Navbar = () => {
 
    return (
       <div className='navbar'>
-         <Link to={'/main'}>Профіль</Link>
+         <Link to={'/profile'}>Профіль</Link>
          <Link to={'/main'}>Квести</Link>
+         <Link to={'/auth'}>Auth</Link>
+
       </div>
    )
 }

@@ -7,7 +7,7 @@ export default function GoBackButton() {
    return (
       <Button
          variant="contained" // Стиль кнопки
-         sx={{ mb: 3, width: 100, bgcolor: "purple" }}
+         sx={{ width: 100, bgcolor: "#394786" }}
          onClick={() => navigate(-1)}
       >
          Go back

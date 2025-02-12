@@ -12,6 +12,8 @@ export function AnswerTypeSelector({ answerType, onChange }) {
          <FormControlLabel value="choice" control={<Radio />} label="Choice" />
          <FormControlLabel value="trueFalse" control={<Radio />} label="True/False" />
          <FormControlLabel value="freeAnswer" control={<Radio />} label="Free answer" />
+         <FormControlLabel value="imageSelection" control={<Radio />} label="imageSelection" />
+
       </RadioGroup>
    );
 }

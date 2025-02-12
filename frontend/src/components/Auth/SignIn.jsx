@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { useRedirectOnAuth } from "../../hooks/useRedirectOnAuth";
+import { useRedirectToMain } from "../../hooks/useRedirectToMain.js";
 import { authService } from "../../services/authService";
 import { MyButton } from "../../UI/button/MyButton.jsx";
 import MyInput from "../../UI/input/MyInput.jsx"
@@ -10,7 +10,7 @@ export const SignIn = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
 
-   const redirectOnAuth = useRedirectOnAuth();
+   const back = useRedirectToMain();
 
    const [signIn, { isLoading }] = authService.useSignInMutation();
 
@@ -19,7 +19,7 @@ export const SignIn = () => {
          const data = await signIn({ email, password });
          localStorage.setItem("email", email)
          console.log(data);
-         redirectOnAuth();
+         back();
       } catch (err) {
          console.error('Failed to sign in:', err);
       }

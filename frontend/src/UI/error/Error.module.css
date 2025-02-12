@@ -1,0 +1,37 @@
+.error {
+   position: absolute;
+   width: 300px;
+   height: 200px;
+   background: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes move {
+   0% {
+      top: 10%;
+      left: 10%;
+   }
+
+   25% {
+      top: 10%;
+      left: 80%;
+   }
+
+   50% {
+      top: 80%;
+      left: 80%;
+   }
+
+   75% {
+      top: 80%;
+      left: 10%;
+   }
+
+   100% {
+      top: 10%;
+      left: 10%;
+   }
+}
+
+.error {
+   animation: move 5s linear infinite alternate;
+}

@@ -4,6 +4,7 @@ import CreateTaskForm from "../components/CreateQuestSection.jsx/AddTaskkSection
 import GoBackButton from "../UI/button/GoBackButton";
 import { MyButton } from "../UI/button/MyButton";
 import { questService } from "../services/questService";
+import { legacy_createStore } from "@reduxjs/toolkit";
 
 export default function CreateQuest() {
    const [questData, setQuestData] = useState({
@@ -20,31 +21,53 @@ export default function CreateQuest() {
    };
 
    const handleUpdateTask = (id, updatedTask) => {
-      const updatedTasks = tasks.map((task) =>
-         task.id === id ? { ...task, ...updatedTask } : task
+      setTasks((prevTasks) =>
+         prevTasks.map((task) => (task.id === id ? { ...task, ...updatedTask } : task))
       );
-      setTasks(updatedTasks);
    };
 
-
+   console.log(tasks)
    const [initQuestId, { isLoading: isInitQuestLoading }] = questService.useInitQuestIdMutation();
    const [addTaskToQuest, { isLoading }] = questService.useAddTaskToQuestMutation();
 
 
    const handleSubmitQuest = async () => {
       try {
-         const { data: questID } = await initQuestId({ ...questData, amountOfQuestions: tasks.length }); // викликаємо запит
+         const { data: questID } = await initQuestId({
+            ...questData,
+            amountOfQuestions: tasks.length,
+         });
+
          console.log(questID);
-         await Promise.all([...tasks.map(item => {
-            console.log(item)
-            let { id, ...body } = item
-            return addTaskToQuest({ questID, body }).unwrap()
-         })])
-         console.log("TASK CREATED")
+
+         await Promise.all(
+            tasks.map(async (item) => {
+               const formData = new FormData();
+               const { id, photo, ...body } = item;
+
+               // Змінено спосіб додавання JSON
+               formData.append("questTaskModel", JSON.stringify(body)); // Додаємо як текст, як у Postman
+
+               if (photo) {
+                  console.log(photo)
+                  formData.append("photo", photo);
+               }
+               for (let pair of formData.entries()) {
+                  console.log(pair[0], pair[1]);
+               }
+
+               return await addTaskToQuest({ questID, formData }).unwrap();
+            })
+         );
+
+         console.log("TASK CREATED");
       } catch (err) {
-         console.error('Failed to sign in:', err);
+         console.error("Failed to create task:", err);
       }
    };
+
+
+
 
    return (
       <>

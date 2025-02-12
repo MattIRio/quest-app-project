@@ -52,24 +52,20 @@ export default function CreateTaskForm({ task, onUpdateTask }) {
    }
 
    const handleSubmitTask = () => {
-      const formData = new FormData();
-      formData.append("task", JSON.stringify({
+      let updatedTask = {
          id: task.id,
          taskDescription,
          questionForTask,
          placeInQuestQueue: task.id,
          expectedAnswer: correctAnswer,
+         photo: multimediaFile,
          ...convertedChoicesForAPI(choices),
          taskType: determineTaskType(multimediaStatus, answerType)
-      }));
+      };
 
-      if (multimediaFile) {
-         formData.append("PhotoForTask", multimediaFile);
-      }
+      console.log("Sending FormData:", updatedTask);
 
-      console.log("Sending FormData:", formData);
-
-      onUpdateTask(task.id, formData);
+      onUpdateTask(task.id, updatedTask);
    };
 
    const answerComponents = useMemo(() => (

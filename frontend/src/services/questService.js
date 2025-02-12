@@ -12,11 +12,12 @@ export const questService = createApi({
          })
       }),
       addTaskToQuest: builder.mutation({
-         query: ({ questID, body }) => ({
+         query: ({ questID, formData }) => ({
             url: `/task/create-task?questID=${questID}`,
             method: "POST",
-            body: body
-         })
+            body: formData, // Передаємо FormData напряму
+            formData: true,
+         }),
       }),
       getQuests: builder.query({
          query: ({ page = 1, size = 20, sort = 'name' }) => ({

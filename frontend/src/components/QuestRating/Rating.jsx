@@ -59,16 +59,14 @@ export default function Rating() {
                <div>
                   <ul style={{ padding: 0, listStyleType: 'none' }}>
                      {filteredQuests.map((quest, index) => (
-                        <Link to={"/quests/" + quest.id}>
-                           <li
-                              key={quest.id}
-                              style={{
-                                 backgroundColor: index & 1 ? 'rgba(255,255,255,0.3)' : 'transparent',
-                                 borderTop: index & 1 ? "1px solid #ddddd" : "none",
-                                 borderBottom: index & 1 ? "1px solid #ddddd" : "none",
-                                 cursor: 'pointer',
-                                 padding: '10px',
-                              }}
+                        <Link to={"/quests/" + quest.id} key={quest.id} >
+                           <li style={{
+                              backgroundColor: index & 1 ? 'rgba(255,255,255,0.3)' : 'transparent',
+                              borderTop: index & 1 ? "1px solid #ddddd" : "none",
+                              borderBottom: index & 1 ? "1px solid #ddddd" : "none",
+                              cursor: 'pointer',
+                              padding: '10px',
+                           }}
                            >
                               <h3 style={{ margin: '0' }}>{quest.name}</h3>
                               <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", flexWrap: "wrap" }}>

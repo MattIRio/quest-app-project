@@ -12,7 +12,7 @@ import { completedQuestsList } from "../constants/temporary/quests.js";
 import ContainerBlurBg from "../UI/container/ContainerBlurBg.jsx";
 import { userService } from "../services/userService.js";
 import Loader from "../UI/Loader/Loader.jsx";
-import { Navigate, useNavigate } from "react-router-dom";
+import Error from "../UI/error/Error.jsx";
 
 
 
@@ -20,11 +20,11 @@ import { Navigate, useNavigate } from "react-router-dom";
 const Profile = () => {
 
 
-   const { data, isLoading } = userService.useGetUserInfoQuery()
-   const navigate = useNavigate()
+   const { data, isLoading, isError } = userService.useGetUserInfoQuery()
+
    if (isLoading) return <Loader />
-   if (!data) navigate("/auth")
-   console.log(currentData)
+   if (isError) return <Error />
+
    return (
       <Container maxWidth="lg">
          <ContainerBlurBg>

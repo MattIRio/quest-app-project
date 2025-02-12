@@ -2,9 +2,8 @@ package com.wizards.quest_task.securityConfig;
 
 
 
-import com.wizards.quest_task.authentication.AuthenticationSuccessHandler;
-import com.wizards.quest_task.authentication.CustomAuthenticationSuccessHandler;
-import com.wizards.quest_task.authentication.MyUserDetailService;
+import com.wizards.quest_task.authentication.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -24,7 +23,8 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfiguration{
 
-
+    @Autowired
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -36,7 +36,7 @@ public class SecurityConfiguration{
                 )
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(List.of("http://localhost:5173"));
+                    config.setAllowedOrigins(List.of("http://localhost:5173", "https://quest-app-project.vercel.app/main"));
                     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
                     config.setAllowedHeaders(List.of("*"));
                     config.setAllowCredentials(true);
@@ -59,14 +59,19 @@ public class SecurityConfiguration{
                 .formLogin(httpSecurityFormLoginConfigurer -> {
                     httpSecurityFormLoginConfigurer
                             .usernameParameter("email")
-                            .successHandler(new CustomAuthenticationSuccessHandler())
+                            .failureHandler(customAuthenticationFailureHandler)
+                            .successHandler(new AuthenticationSuccessHandler())
                             .permitAll();
 
                 })
                 .oauth2Login(oauth2 -> oauth2
-                        .successHandler(new AuthenticationSuccessHandler())
-                        .loginPage("/loginPage")
-                        .defaultSuccessUrl("/profileform", true)
+                        .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService()))
+                        .successHandler((request, response, authentication) -> {
+                            response.sendRedirect("/home");
+                        })
+                        .failureHandler((request, response, exception) -> {
+                            response.sendRedirect("/login?error");
+                        })
                 )
                 .build();
     }
@@ -74,6 +79,10 @@ public class SecurityConfiguration{
     @Bean
     public UserDetailsService userDetailsService(MyUserDetailService myUserDetailService) {
         return myUserDetailService;
+    }
+    @Bean
+    public CustomOAuth2UserService customOAuth2UserService() {
+        return new CustomOAuth2UserService();
     }
 
     @Bean

@@ -1,5 +1,6 @@
 package com.wizards.quest_task.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,38 +8,34 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCompletedQuest {
+@Entity
+public class OngoingTasks {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Transient
-    private String condition;
+    private UUID performerid;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "relatedOngoingQuest_id")
     @JsonIgnore
-    private UserModel user;
+    private OngoingQuestModel relatedOngoingQuest;
 
-    @ManyToOne
-    @JoinColumn(name = "quest_id")
-    private QuestModel quest;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "relatedTask_id")
+    private QuestTaskModel relatedTask;
 
-    private LocalDate completionDate;
+    private Boolean completionResult;
 
-    private Double score;
-
-    private Double ratedGrade;
+    private String receivedAnswer;
 
 }

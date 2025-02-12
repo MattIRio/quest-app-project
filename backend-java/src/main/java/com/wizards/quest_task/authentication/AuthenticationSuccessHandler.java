@@ -1,6 +1,7 @@
 package com.wizards.quest_task.authentication;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
@@ -12,9 +13,19 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
-            setDefaultTargetUrl("/quests-main-page");
 
+        String sessionId = request.getSession().getId();
 
-        super.onAuthenticationSuccess(request, response, authentication);
+        Cookie cookie = new Cookie("sessionId", sessionId);
+        cookie.setAttribute("SameSite", "None");
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(60 * 60);
+
+        response.addCookie(cookie);
+
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().write("Authentication successful");
     }
 }

@@ -3,6 +3,7 @@ package com.wizards.quest_task.authentication;
 import com.wizards.quest_task.controller.autentification.LoginController;
 import com.wizards.quest_task.model.UserModel;
 import com.wizards.quest_task.repositories.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

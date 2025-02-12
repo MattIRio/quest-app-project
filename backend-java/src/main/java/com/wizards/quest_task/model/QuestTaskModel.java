@@ -1,5 +1,7 @@
 package com.wizards.quest_task.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wizards.quest_task.model.ENUM.TaskType;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -16,13 +18,18 @@ public class QuestTaskModel {
     @Id
     private UUID id;
 
+    @Enumerated(EnumType.STRING)
     private TaskType taskType;
 
     private String taskDescription;
 
     private String questionForTask;
 
-    private String PhotoForTask;
+    @Column(columnDefinition = "BYTEA")
+    private byte[] PhotoForTask;
+
+    @Transient
+    private byte[] setAvatarBase64;
 
     private String VideoForTask;
 
@@ -34,16 +41,31 @@ public class QuestTaskModel {
 
     private String answerVariation4;
 
-    private Integer firstImageCoordinate;
+    private Integer firstXImageCoordinate;
 
-    private Integer secondImageCoordinate;
+    private Integer firstYImageCoordinate;
 
-    private String expectedAnswerForFreeQuestion;
+    private Integer secondXImageCoordinate;
+
+    private Integer secondYImageCoordinate;
+
+    private String expectedAnswer;
+
+    private String receivedAnswer;
 
     @ManyToOne
     @JoinColumn(name = "quest_id")
+    @JsonIgnore
     private QuestModel parentQuest;
 
     private int placeInQuestQueue;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "relatedOngoingTask_id")
+    @JsonIgnore
+    private OngoingTasks relatedOngoingTask;
+
+    public void setAvatarBase64(String s) {
+    }
 
 }

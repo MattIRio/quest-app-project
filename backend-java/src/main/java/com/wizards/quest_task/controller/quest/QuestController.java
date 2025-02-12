@@ -4,6 +4,7 @@ import com.wizards.quest_task.model.QuestModel;
 import com.wizards.quest_task.repositories.CompletedQuestsRepository;
 import com.wizards.quest_task.repositories.QuestRepository;
 import com.wizards.quest_task.service.quest.QuestService;
+import com.wizards.quest_task.service.user.UserQuestTimer;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class QuestController {
     QuestRepository questRepository;
     @Autowired
     CompletedQuestsRepository completedQuestsRepository;
+    @Autowired
+    UserQuestTimer userQuestTimer;
 
     @PostMapping
     private ResponseEntity<UUID> createQuest(Principal principal,
@@ -58,10 +61,13 @@ public class QuestController {
         }
     }
 
-    @GetMapping("/quests")
-    public ResponseEntity<List<QuestModel>> queryQuests(@RequestParam(required = false, defaultValue = "0") int page,
+    @GetMapping("/get-quests")
+    public ResponseEntity<List<QuestModel>> queryQuests(Principal principal,
+                                                        @AuthenticationPrincipal OAuth2User authentication,
+                                                        @RequestParam(required = false, defaultValue = "0") int page,
                                                         @RequestParam(required = false, defaultValue = "20") int size,
                                                         @RequestParam(defaultValue = "rating") String sort) {
+        userQuestTimer.checkIfAnyExpiredQuests(principal,authentication);
         List<QuestModel> result;
         switch (sort) {
             case "name":
@@ -78,15 +84,16 @@ public class QuestController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/ratequests")
-    public ResponseEntity<Double> rateQuests(@RequestParam UUID questId) {
-        Double averageRating = completedQuestsRepository.findAverageRatingByQuestID(questId);
-        double rounded = Math.round(averageRating * 10.0) / 10.0;
+    @GetMapping("/get-quest-by-id/{questId}")
+    public ResponseEntity<QuestModel> queryQuests(Principal principal,
+                                                        @AuthenticationPrincipal OAuth2User authentication,
+                                                        @PathVariable UUID questId) {
         QuestModel currentQuest = questRepository.findById(questId)
                 .orElseThrow(() -> new EntityNotFoundException("Quest not found with id: " + questId));
-        currentQuest.setRating(rounded);
-        questRepository.save(currentQuest);
-        return ResponseEntity.ok(rounded);
+
+        return ResponseEntity.ok(currentQuest);
     }
+
+
 
 }

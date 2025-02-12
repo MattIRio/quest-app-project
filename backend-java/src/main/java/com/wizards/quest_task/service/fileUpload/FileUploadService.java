@@ -1,9 +1,11 @@
 package com.wizards.quest_task.service.fileUpload;
 
 import com.wizards.quest_task.authentication.OauthAndPrincipalAuthController;
+import com.wizards.quest_task.model.QuestTaskModel;
 import com.wizards.quest_task.model.UserModel;
 import com.wizards.quest_task.repositories.QuestTaskRepository;
 import com.wizards.quest_task.repositories.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -33,39 +35,33 @@ public class FileUploadService {
     @Transactional
     public String uploadProfilePicture(MultipartFile file, Principal principal, @AuthenticationPrincipal OAuth2User authentication) {
         UserModel currentUser = oauthAndPrincipalAuthController.getCurrentUser(principal, authentication);
-        String fileName = file.getOriginalFilename();
-        Path fileNameAndPath = Paths.get(uploadDirecotry, currentUser.getUserName() + "_" + fileName);
-        try {
-        if (currentUser.getAvatar() != null) {
-            Path currentAvatar = Path.of(currentUser.getAvatar());
-            if (currentAvatar != null) {
-                Files.deleteIfExists(currentAvatar);
-                currentUser.setAvatar(null);
-            }
-        }
-        Files.write(fileNameAndPath, file.getBytes());
-        UserModel localUser = usersRepository.findByEmail(currentUser.getEmail());
-        localUser.setAvatar(uploadDirecotry + currentUser.getUserName() + "_" + fileName);
-        usersRepository.save(localUser);
 
-        }catch (IOException e) {
-            System.err.println("Failed to delete file: " + fileNameAndPath);
+        try {
+            byte[] fileBytes = file.getBytes();
+
+            UserModel localUser = usersRepository.findByEmail(currentUser.getEmail());
+            localUser.setAvatar(fileBytes);
+            usersRepository.save(localUser);
+
+        } catch (IOException e) {
+            System.err.println("Failed to process file: " + file.getOriginalFilename());
+            return null;
         }
-        return fileName;
+        return file.getOriginalFilename();
     }
 
     @Transactional
-    public String uploadTaskPicture(MultipartFile file, Principal principal, @AuthenticationPrincipal OAuth2User authentication, UUID taskId) {
+    public byte[] uploadTaskPicture(MultipartFile file, Principal principal, @AuthenticationPrincipal OAuth2User authentication, UUID taskId) throws IOException {
         UserModel currentUser = oauthAndPrincipalAuthController.getCurrentUser(principal, authentication);
-        String fileName = file.getOriginalFilename();
-        Path fileNameAndPath = Paths.get(uploadDirecotry, currentUser.getUserName() + "_" + taskId + "_" + fileName);
-        try {
-            Files.write(fileNameAndPath, file.getBytes());
+        QuestTaskModel task = questTaskRepository.findById(taskId).orElseThrow(() -> new RuntimeException("Task not found"));
 
-        }catch (IOException e) {
-            System.err.println("Failed to delete file: " + fileNameAndPath);
+        try {
+            task.setPhotoForTask(file.getBytes());
+        } catch (IOException e) {
+            System.err.println("Failed to save task image: " + e.getMessage());
+            return null;
         }
-        return uploadDirecotry + currentUser.getUserName() + "_" + taskId + "_" + fileName;
+        return file.getBytes();
     }
 
 

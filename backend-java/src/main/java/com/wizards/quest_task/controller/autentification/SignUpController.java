@@ -5,6 +5,7 @@ package com.wizards.quest_task.controller.autentification;
 import com.wizards.quest_task.model.UserModel;
 import com.wizards.quest_task.repositories.UserRepository;
 import com.wizards.quest_task.service.signup.SignUpService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,14 +36,14 @@ public class SignUpController {
         }
 
     @PostMapping("/signUpUser")
-    public String createUser(@RequestBody UserModel userModel, RedirectAttributes redirectAttributes) {
+    public ResponseEntity<UserModel> createUser(@RequestBody UserModel userModel, RedirectAttributes redirectAttributes) {
         try {
-            signUpService.createUser(userModel, redirectAttributes);
-            return "redirect:/loginPage";
+            UserModel user = signUpService.createUser(userModel, redirectAttributes);
+            return ResponseEntity.ok(user);
         }catch (ResponseStatusException e) {
             System.out.println("Unexpected error: " + e);
             ResponseEntity.status(e.getStatusCode()).body(e.getReason()).getBody();
-            return "redirect:/signUpPage";
+            return (ResponseEntity<UserModel>) ResponseEntity.notFound();
         }
     }
 

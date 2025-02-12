@@ -2,7 +2,10 @@ package com.wizards.quest_task.service.user;
 
 
 import com.wizards.quest_task.authentication.OauthAndPrincipalAuthController;
+import com.wizards.quest_task.model.QuestModel;
 import com.wizards.quest_task.model.UserModel;
+import com.wizards.quest_task.repositories.CompletedQuestsRepository;
+import com.wizards.quest_task.repositories.QuestRepository;
 import com.wizards.quest_task.repositories.UserRepository;
 import com.wizards.quest_task.service.fileUpload.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.util.Base64;
+import java.util.List;
 
 
 @Service
@@ -25,11 +30,34 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     FileUploadService fileUploadService;
+    @Autowired
+    QuestRepository questRepository;
+    @Autowired
+    CompletedQuestsRepository completedQuestsRepository;
+
 
     public UserModel getCurrentUser(Principal principal,
                                     @AuthenticationPrincipal OAuth2User authentication){
         UserModel currentUser = oauthAndPrincipalAuthController.getCurrentUser(principal, authentication);
+        if (currentUser.getAvatar() != null) {
+            String base64Image = Base64.getEncoder().encodeToString(currentUser.getAvatar());
+            currentUser.setAvatarBase64("data:image/png;base64," + base64Image);
+        }
         return currentUser;
+    }
+
+    public List<QuestModel> getCurrentUserCreatedQuests(Principal principal,
+                                                         @AuthenticationPrincipal OAuth2User authentication){
+        UserModel currentUser = oauthAndPrincipalAuthController.getCurrentUser(principal, authentication);
+        return currentUser.getCreatedQuests();
+
+    }
+
+    public List<QuestModel> getCurrentUserCompletedQuests(Principal principal,
+                                                         @AuthenticationPrincipal OAuth2User authentication){
+        UserModel currentUser = oauthAndPrincipalAuthController.getCurrentUser(principal, authentication);
+        return completedQuestsRepository.findCompletedQuestsByUser(currentUser);
+
     }
 
     public void changeCurrentUserInfo(Principal principal,

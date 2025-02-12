@@ -52,8 +52,7 @@ public class QuestTaskService {
             for (QuestTaskModel task : existedTasks) {
                 if (task.getPlaceInQuestQueue() == questTaskModel.getPlaceInQuestQueue()) {
                     if (task.getPhotoForTask() != null) {
-                        Path currentPhoto = Path.of(task.getPhotoForTask());
-                        Files.deleteIfExists(currentPhoto);
+                        task.setPhotoForTask(null);
                     } else if (task.getVideoForTask() != null) {
                         Path currentVideo = Path.of(task.getVideoForTask());
                         Files.deleteIfExists(currentVideo);
@@ -76,20 +75,27 @@ public class QuestTaskService {
                         currentTask.setAnswerVariation2(questTaskModel.getAnswerVariation2());
                         currentTask.setAnswerVariation3(questTaskModel.getAnswerVariation3());
                         currentTask.setAnswerVariation4(questTaskModel.getAnswerVariation4());
+                        currentTask.setExpectedAnswer(questTaskModel.getExpectedAnswer());
+                        currentTask.setReceivedAnswer(questTaskModel.getReceivedAnswer());
                         break;
                     case IMAGE:
-                        currentTask.setPhotoForTask(fileUploadService.uploadTaskPicture(photo, principal, authentication, currentTask.getId()));
+                        currentTask.setPhotoForTask((photo.getBytes()));
                         currentTask.setQuestionForTask(questTaskModel.getQuestionForTask());
-                        currentTask.setFirstImageCoordinate(questTaskModel.getFirstImageCoordinate());
-                        currentTask.setSecondImageCoordinate(questTaskModel.getSecondImageCoordinate());
+                        currentTask.setFirstXImageCoordinate(questTaskModel.getFirstXImageCoordinate());
+                        currentTask.setFirstYImageCoordinate(questTaskModel.getFirstYImageCoordinate());
+                        currentTask.setSecondXImageCoordinate(questTaskModel.getSecondXImageCoordinate());
+                        currentTask.setSecondYImageCoordinate(questTaskModel.getSecondYImageCoordinate());
+                        currentTask.setReceivedAnswer(questTaskModel.getReceivedAnswer());
                         break;
                     case IMAGEWITHTEXTANSWER:
-                        currentTask.setPhotoForTask(fileUploadService.uploadTaskPicture(photo, principal, authentication, currentTask.getId()));
+                        currentTask.setPhotoForTask(photo.getBytes());
                         currentTask.setQuestionForTask(questTaskModel.getQuestionForTask());
                         currentTask.setAnswerVariation1(questTaskModel.getAnswerVariation1());
                         currentTask.setAnswerVariation2(questTaskModel.getAnswerVariation2());
                         currentTask.setAnswerVariation3(questTaskModel.getAnswerVariation3());
                         currentTask.setAnswerVariation4(questTaskModel.getAnswerVariation4());
+                        currentTask.setExpectedAnswer(questTaskModel.getExpectedAnswer());
+                        currentTask.setReceivedAnswer(questTaskModel.getReceivedAnswer());
                         break;
                     case VIDEO:
                         currentTask.setVideoForTask(videoUploadServiceService.uploadFile(video, principal, authentication, currentTask.getId()));
@@ -98,19 +104,24 @@ public class QuestTaskService {
                         currentTask.setAnswerVariation2(questTaskModel.getAnswerVariation2());
                         currentTask.setAnswerVariation3(questTaskModel.getAnswerVariation3());
                         currentTask.setAnswerVariation4(questTaskModel.getAnswerVariation4());
+                        currentTask.setExpectedAnswer(questTaskModel.getExpectedAnswer());
+                        currentTask.setReceivedAnswer(questTaskModel.getReceivedAnswer());
                         break;
                     case TEXTWITHFREEANSWER:
                         currentTask.setQuestionForTask(questTaskModel.getQuestionForTask());
-                        currentTask.setExpectedAnswerForFreeQuestion(questTaskModel.getExpectedAnswerForFreeQuestion());
+                        currentTask.setExpectedAnswer(questTaskModel.getExpectedAnswer());
+                        currentTask.setReceivedAnswer(questTaskModel.getReceivedAnswer());
                         break;
                     case IMAGEWITHFREEANSWER:
-                        currentTask.setPhotoForTask(fileUploadService.uploadTaskPicture(photo, principal, authentication, currentTask.getId()));
+                        currentTask.setPhotoForTask(photo.getBytes());
                         currentTask.setQuestionForTask(questTaskModel.getQuestionForTask());
-                        currentTask.setExpectedAnswerForFreeQuestion(questTaskModel.getExpectedAnswerForFreeQuestion());
+                        currentTask.setExpectedAnswer(questTaskModel.getExpectedAnswer());
+                        currentTask.setReceivedAnswer(questTaskModel.getReceivedAnswer());
                         break;
                     case VIDEOWITHFREEANSWER:
                         currentTask.setVideoForTask(videoUploadServiceService.uploadFile(video, principal, authentication, currentTask.getId()));
-                        currentTask.setExpectedAnswerForFreeQuestion(questTaskModel.getExpectedAnswerForFreeQuestion());
+                        currentTask.setExpectedAnswer(questTaskModel.getExpectedAnswer());
+                        currentTask.setReceivedAnswer(questTaskModel.getReceivedAnswer());
                         break;
                 }
 

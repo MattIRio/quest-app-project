@@ -17,10 +17,10 @@ const AuthForm = () => {
    const [isSignUp, setIsSignUp] = useState(false)
    const navigate = useNavigate();
 
-   const handleGitHubLogin = () => {
-      const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${githubClientId}&redirect_uri=http://localhost:5173/login/oauth2/code/github&scope=user`;
-      window.location.href = githubAuthUrl;
-   };
+   // const handleGitHubLogin = () => {
+   //    const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${githubClientId}&redirect_uri=http://localhost:5173/login/oauth2/code/github&scope=user`;
+   //    window.location.href = githubAuthUrl;
+   // };
 
    return (
 
@@ -36,6 +36,7 @@ const AuthForm = () => {
             <GoogleLogin
                onSuccess={(response) => {
                   console.log('Success:', response);
+                  navigate("/main")
                }}
                onError={() => console.log('Login Failed')}
                ux_mode="popup"

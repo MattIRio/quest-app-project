@@ -8,30 +8,28 @@ import React from 'react';
 
 const AppRouter = () => {
    return (
-      <>
-         <Routes>
+      <Routes>
 
-            {
-               publicRoutes.map(route =>
-                  <Route
-                     key={route.path}
-                     path={route.path}
-                     element={<route.component />}
-                  />
-               )
-            }
-            {
-               privateRoutes.map(route =>
-                  <Route
-                     key={route.path}
-                     path={route.path}
-                     element={<PrivateRoute routePage={<route.component />} />}
-                  />
-               )
-            }
-            <Route path={"*"} element={<Navigate to="/main" />} />
-         </Routes >
-      </>
+         {
+            publicRoutes.map(route =>
+               <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<route.component />}
+               />
+            )
+         }
+         {
+            privateRoutes.map(route =>
+               <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<PrivateRoute routePage={<route.component />} />}
+               />
+            )
+         }
+         <Route path={"*"} element={<Navigate to="/main" />} />
+      </Routes >
    )
 }
 

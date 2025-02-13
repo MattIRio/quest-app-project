@@ -4,14 +4,11 @@ import { useSelector } from "react-redux";
 
 
 const PrivateRoute = ({ routePage }) => {
-   // const { isAuthenticated } = useSelector(state => state.auth)
-   const isAuthenticated = true
 
-   // const token = localStorage.getItem("accessToken")
-   const location = useLocation()
+   const isAuthenticated = localStorage.getItem("username")
    return (
       <>
-         {(isAuthenticated) ? routePage : <Navigate to={"/auth"} state={{ from: location }} />}
+         {(isAuthenticated) ? routePage : <Navigate to={"/auth"} state={{ from: "/main" }} />}
       </>
    )
 }

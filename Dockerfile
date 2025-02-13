@@ -5,13 +5,13 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Копіюємо package.json і package-lock.json
-COPY package.json package-lock.json ./
+COPY frontend/package.json frontend/package-lock.json ./
 
 # Встановлюємо залежності
 RUN npm install
 
 # Копіюємо весь код у контейнер
-COPY . .
+COPY frontend .
 
 # Відкриваємо порт 3000 для React
 EXPOSE 5173

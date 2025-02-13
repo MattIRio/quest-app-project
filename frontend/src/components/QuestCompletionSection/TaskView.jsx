@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 export function TaskView({ task, currentTask, answers, handleAnswer, handleTextAnswer }) {
+   useEffect(() => {
+      if (!task) return <>No TAsks</>
+   }, [])
    return (
       <>
          <h2>{currentTask + 1}. {task.taskDescription}</h2>

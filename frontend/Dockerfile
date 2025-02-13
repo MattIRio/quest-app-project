@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Відкриваємо порт 3000 для React
-EXPOSE 3000
+EXPOSE 5173
 
 # Запускаємо React у режимі розробки
 CMD ["npm", "run", "dev"]

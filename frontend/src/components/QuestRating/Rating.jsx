@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { quests } from '../../constants/temporary/quests';
 import QuestFilter from './QuestFilter';
-import { Box, CircularProgress, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
 import ContainerBlurBg from '../../UI/container/ContainerBlurBg';
 import { Link } from 'react-router-dom';
 import { questService } from '../../services/questService';
@@ -15,10 +13,8 @@ export default function Rating() {
 
    const [filteredQuests, setFilteredQuests] = useState([]);
    const [filters, setFilters] = useState({ search: '', rating: 'desc', tags: [] });
-   console.log(isError)
    useEffect(() => {
       if (quests) {
-         // Оновити початковий стан при завантаженні quests
          setFilteredQuests(quests);
       }
    }, [quests]);
@@ -33,11 +29,11 @@ export default function Rating() {
          let filtered = quests.filter((quest) =>
             quest.name.toLowerCase().includes(filters.search.toLowerCase())
          );
-         if (filters.tags.length) {
-            filtered = filtered.filter((quest) =>
-               quest.tags.some((tag) => filters.tags.includes(tag))
-            );
-         }
+         // if (filters.tags.length) {
+         //    filtered = filtered.filter((quest) =>
+         //       quest.tags.some((tag) => filters.tags.includes(tag))
+         //    );
+         // }
          filtered.sort((a, b) => (filters.rating === "asc" ? a.rating - b.rating : b.rating - a.rating));
          setFilteredQuests(filtered);
       }

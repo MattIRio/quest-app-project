@@ -3,7 +3,7 @@ import { Container, Typography, Button } from "@mui/material";
 import Rating from "@mui/material/Rating";
 import { MyButton } from "../../UI/button/MyButton";
 
-export default function QuestRating({ onSubmit }) {
+export default function RateQuest({ onSubmit }) {
    const [rating, setRating] = useState(0);
 
    const handleSubmit = () => {

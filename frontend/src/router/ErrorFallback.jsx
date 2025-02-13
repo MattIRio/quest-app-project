@@ -9,7 +9,7 @@ const ErrorFallback = ({
 }) => {
    const navigate = useNavigate()
    const resetErrorBoundary = () => {
-      navigate("auth")
+      navigate("/auth")
    }
    return (
       <Container>

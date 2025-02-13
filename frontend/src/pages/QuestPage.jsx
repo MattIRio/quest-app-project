@@ -4,7 +4,8 @@ import { questService } from "../services/questService";
 import { CircularProgress, Container } from "@mui/material";
 import QuestPreview from "../components/QuestCompletionSection/QuestPreview";
 import QuestCompletion from "../components/QuestCompletionSection/QuestCompletion";
-import QuestRating from "../components/QuestCompletionSection/RateQuest";
+import RateQuest from "../components/QuestCompletionSection/RateQuest";
+import { useRedirectToMain } from "../hooks/useRedirectToMain";
 
 export default function QuestPage() {
    const [started, setStarted] = useState(false);
@@ -12,7 +13,7 @@ export default function QuestPage() {
    const { data: questData, isLoading } = questService.useGetQuestByIdQuery(params.questId);
    const [startQuest, { isLoading: isStarting }] = questService.useStartQuestMutation();
    const [rateQuest, { isLoading: isRateLoading }] = questService.useRateQuestMutation();
-
+   const back = useRedirectToMain()
    const [currQuestData, setCurrQuestData] = useState(null)
    const [isQuestGoing, setIsGoing] = useState(false)
    console.log(currQuestData)
@@ -37,6 +38,7 @@ export default function QuestPage() {
             questId: currQuestData.id,
             userGrade
          });
+         back()
       } catch (error) {
          console.error("Помилка старту квесту:", error);
       }
@@ -58,7 +60,7 @@ export default function QuestPage() {
             <>
                <QuestCompletion questData={currQuestData} setIsGoing={setIsGoing} />
                {
-                  !isQuestGoing && <QuestRating onSubmit={(rating) => handleRate(rating)} />
+                  !isQuestGoing && <RateQuest onSubmit={(rating) => handleRate(rating)} />
                }
             </>
 

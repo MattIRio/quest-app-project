@@ -1,6 +1,6 @@
 # Virtual Quests - Interactive Platform
 
-# Link to Site
+## Link to Site
 "insert link"
 
 ## Description
@@ -30,3 +30,10 @@ This project is a web platform for creating and completing interactive quests wi
 - **Frontend**: React.js, CSS, Mui, Rtk query, Witi
 - **Database**: PostgreSQL
 - **Deployment**: Heroku / Docker
+
+## Running the Project with Docker
+
+### 1. Build and Run with `docker-compose`
+```sh
+docker-compose up --build
+

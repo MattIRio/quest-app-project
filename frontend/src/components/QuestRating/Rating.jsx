@@ -29,11 +29,11 @@ export default function Rating() {
          let filtered = quests.filter((quest) =>
             quest.name.toLowerCase().includes(filters.search.toLowerCase())
          );
-         if (filters.tags.length) {
-            filtered = filtered.filter((quest) =>
-               quest.tags.some((tag) => filters.tags.includes(tag))
-            );
-         }
+         // if (filters.tags.length) {
+         //    filtered = filtered.filter((quest) =>
+         //       quest.tags.some((tag) => filters.tags.includes(tag))
+         //    );
+         // }
          filtered.sort((a, b) => (filters.rating === "asc" ? a.rating - b.rating : b.rating - a.rating));
          setFilteredQuests(filtered);
       }

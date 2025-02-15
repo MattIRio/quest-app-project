@@ -1,7 +1,5 @@
 # Virtual Quests - Interactive Platform
 
-## Link to Site
-"insert link"
 
 ## Description
 This project is a web platform for creating and completing interactive quests with multimedia elements. Users can create their own quests, configure tasks, and participate in quests created by others.
